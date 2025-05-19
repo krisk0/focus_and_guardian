@@ -7,25 +7,19 @@ Automates focus and guardian choice, for all your underage courtiers. The mod is
 ## Technical requirements
 
 * Crusader Kings version Crown 1.15.0.2.
-
 * Elder Kings modification version 0.15.1.
 
 ## Features
 
 1. A chain of events that chooses focus and then guardian is evoked monthly or by your decision.
-
 2. Education focus choice is automatic; guardian selection if either manual or automatic, like in [buddykenner's mod](https://catalogue.smods.ru/archives/127942).
-
 3. The event chain can be only one at any given moment (spam protection).
-
 4. The event chain is suspended if you chose "I will think on this later" or "Don't I pay <TUTOR> to teach all children of the court?" option.
-
 5. The event chain is restarted for another child if not suspended.
 
 Conditions for the monthly event:
 
 * a child of age at least 5 at your court has no guardian, is not travelling to/from education host;
-
 * event chain is not suspended by your decision.
 
 ## Legal notice
@@ -37,16 +31,11 @@ buddykenner, thank you for releasing your wonderful mod in the public domain.
 Suppose you want to turn nearly all your childen to your faith. Suppose further you have a 12-years old child with wrong faith and good genes in your prison. 12 years is a critical age for faith conversion; you want to start education/conversion as soon as possible.
 
 1. You choose decision "Start Education Automation" and turn off automatic choice of guardian.
-
 2. You release from prison the 12-year old and force her to be your courtier.
-
 3. You do not want to wait until end of month and choose decision "Are all my children educated?".
-
 4. The event runs for eldest child who happens to be that 12-years old. You get a dialog showing two possible guardians.
-
-5. You take last option "I will think on this later"; choose guardian of your faith manually; select option to convert faith.
-
-6. You again choose decision "Are all my children educated?", to enable focus-guardian loop.
+5. If one of the two guardians if of the right faith, you choose him; immedialtely after the focus-education event chain in run for another child.
+6. If none of the two guadians is of the right faith, you take last option "I will think on this later"; choose guardian of your faith manually, and enable faith  conversion; choose decision "Are all my children educated?", to enable focus-guardian loop.
 
 ## Guardian choice
 
@@ -67,9 +56,7 @@ Hopefully things will be better with newer version of the game. Will return to t
 I chose to modify the original [EA mod](https://catalogue.smods.ru/archives/127942) for the following reasons:
 
 * EA mod only runs events once per year, not once per month; no way to force thru decision.
-
 * EA mod does not automate focus choice.
-
 * EA dialogs might spam: a new dialog for a next child might emerge, before I choose guardian for a previous child.
 
 ## Installation
