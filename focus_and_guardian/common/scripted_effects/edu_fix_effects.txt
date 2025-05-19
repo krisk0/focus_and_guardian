@@ -1,0 +1,265 @@
+﻿edu_fix_assign_guardian_effect = {
+	scope:potential_ward = {
+		remove_variable = edu_fix_allowed
+		employer = { save_scope_as = owner }
+	}
+	if = {
+		limit = {
+			exists = $GUARDIAN$
+		}
+		scope:potential_ward = {
+			set_relation_guardian = $GUARDIAN$
+
+			if = {
+				limit = {
+					has_variable = edu_fix_dead_guardian
+				}
+				remove_variable = edu_fix_dead_guardian
+			}
+			if = {
+				limit = {
+					has_variable = edu_fix_removed_guardian
+				}
+				remove_variable = edu_fix_removed_guardian
+			}
+			if = {
+				limit = {
+					$GUARDIAN$ = { is_landed = yes }
+					scope:potential_ward = { is_landed = no }
+					NOT = {
+						$GUARDIAN$ = scope:potential_ward.host
+					}
+				}
+				visit_court_of = $GUARDIAN$
+			}
+			else_if = {
+				limit = {
+					$GUARDIAN$ = { is_landed = no }
+					scope:potential_ward = { is_landed = yes }
+					NOT = {
+						scope:potential_ward = $GUARDIAN$.host
+					}
+				}
+				$GUARDIAN$ = {
+					visit_court_of = scope:potential_ward
+				}
+			}
+			else_if = {
+				limit = {
+					$GUARDIAN$ = { is_landed = no }
+					scope:potential_ward = { is_landed = no }
+					exists = $GUARDIAN$.host
+					NOT = {
+						$GUARDIAN$.host = scope:potential_ward.host
+					}
+				}
+				visit_court_of = $GUARDIAN$.host
+			}
+		}
+		guardian_add_opinion_effect = { GUARDIAN = $GUARDIAN$ WARD_LIEGE = scope:potential_ward.liege WARD = scope:potential_ward }
+	}
+	scope:owner = {
+		remove_variable = edu_fix_eldest_lock
+		# If one child needed a fix, maybe there is another?
+		debug_log = "recursive call"
+		trigger_event = edu_fix.9999
+	}
+}
+
+edu_fix_switch_selector_effect = {
+	switch = {
+		trigger = scope:edu_fix_story.var:edu_fix_$RELATION$
+		flag:event = { scope:ward_employer = { trigger_event = edu_fix.0002 } } #Fire an event to give more options and remind the player
+		flag:auto = { edu_fix_assign_guardian_effect = { GUARDIAN = scope:potential_guardian } } #Automatically assign the potential guardian
+		flag:nothing = {
+			scope:potential_ward = {
+				remove_variable = edu_fix_allowed
+				employer = { remove_variable = edu_fix_eldest_lock }
+			}
+		}
+	}
+}
+
+edu_fix_guardian_skill_tt_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:potential_ward }
+				scope:potential_ward = {
+					NOT = {
+						has_focus = education_learning
+						has_focus = education_diplomacy
+						has_focus = education_intrigue
+						has_focus = education_martial
+						has_focus = education_stewardship
+					}
+				}
+			}
+			trigger_else_if = {
+				limit = { exists = scope:ward }
+				scope:ward = {
+					NOT = {
+						has_focus = education_learning
+						has_focus = education_diplomacy
+						has_focus = education_intrigue
+						has_focus = education_martial
+						has_focus = education_stewardship
+					}
+				}
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+		custom_tooltip = edu_fix_missing_focus
+	}
+	if = {
+		limit = {
+			exists = scope:ward
+			NOT = { exists = scope:potential_ward }
+		}
+		scope:ward = {
+			save_scope_as = potential_ward
+		}
+	}
+	if = {
+		limit = {
+			NOT = { exists = scope:ward }
+			NOT = { exists = scope:potential_ward }
+		}
+		save_scope_as = potential_ward
+	}
+	if = {
+		limit = {
+			scope:potential_ward = {
+				exists = court_owner
+				court_owner = { employs_court_position = court_tutor_court_position	}
+			}
+		}
+		scope:potential_ward.court_owner = {
+			random_court_position_holder = {
+				type = court_tutor_court_position
+				save_scope_as = tutor
+			}
+		}
+	}
+	#add_gold = $GUARDIAN$.educator_skill_value
+	if = {
+		limit = {
+			$GUARDIAN$.educator_skill_value > 15
+		}
+		custom_tooltip = edu_fix_guardian_skill_excellent
+	}
+	else_if = {
+		limit = {
+			$GUARDIAN$.educator_skill_value > 10
+		}
+		custom_tooltip = edu_fix_guardian_skill_good
+	}
+	else_if = {
+		limit = {
+			$GUARDIAN$.educator_skill_value > 5
+		}
+		custom_tooltip = edu_fix_guardian_skill_average
+	}
+	else_if = {
+		limit = {
+			$GUARDIAN$.educator_skill_value > 0
+		}
+		custom_tooltip = edu_fix_guardian_skill_poor
+	}
+	else = {
+		custom_tooltip = edu_fix_guardian_skill_terrible
+	}
+	if = {
+		limit = {
+			exists = scope:tutor
+			NOT = { scope:tutor = $GUARDIAN$ }
+			scope:tutor.educator_skill_value > $GUARDIAN$.educator_skill_value
+		}
+		custom_tooltip = edu_fix_tutor_better
+	}
+	if = {
+		limit = {
+			scope:potential_ward.liege = {
+				knows_about_character_being_witch_trigger = { CHARACTER = $GUARDIAN$ }
+			}
+		}
+		scope:potential_ward = {
+			custom_tooltip = edu_fix_witch_education_tt
+		}
+	}
+}
+
+edu_fix_cycle_variable_effect = {
+	switch = {
+		trigger = scope:edu_fix_story.var:edu_fix_$RELATION$
+		flag:event = { scope:edu_fix_story = { set_variable = { name = edu_fix_$RELATION$ value = flag:auto} } }
+		flag:auto = { scope:edu_fix_story = { set_variable = { name = edu_fix_$RELATION$ value = flag:nothing} } }
+		flag:nothing = { scope:edu_fix_story = { set_variable = { name = edu_fix_$RELATION$ value = flag:event} } }
+	}
+}
+
+edu_fix_decision_tt_effect = {
+	custom_tooltip = edu_fix_decision_tt_1
+	custom_tooltip = edu_fix_decision_tt_2
+}
+
+#Start of Vanilla Effects with Tooltip effect added
+educate_child_interaction_effect = {
+	scope:ward = {
+		edu_fix_guardian_skill_tt_effect = { GUARDIAN = scope:guardian }
+
+		# Culture/faith conversion + university gold/tooltips
+		education_flags_tooltips_effect = yes
+	}
+	# Travel setup
+	ward_depart_effect = yes
+}
+
+educate_child_event_effect = {
+	scope:ward = {
+		#Set relation and move character
+
+		edu_fix_guardian_skill_tt_effect = { GUARDIAN = scope:guardian }
+
+		set_relation_guardian = scope:guardian
+
+		if = {
+			limit = {
+				scope:guardian = { is_landed = yes }
+				scope:ward = { is_landed = no }
+				NOT = {
+					scope:guardian = scope:ward.host
+				}
+			}
+			visit_court_of = scope:guardian
+		}
+		else_if = {
+			limit = {
+				scope:guardian = { is_landed = no }
+				scope:ward = { is_landed = yes }
+				NOT = {
+					scope:ward = scope:guardian.host
+				}
+			}
+			scope:guardian = {
+				visit_court_of = scope:ward
+			}
+		}
+		else_if = {
+			limit = {
+				scope:guardian = { is_landed = no }
+				scope:ward = { is_landed = no }
+				exists = scope:guardian.host
+				NOT = {
+					scope:guardian.host = scope:ward.host
+				}
+			}
+			visit_court_of = scope:guardian.host
+		}
+	}
+
+	#Opinions
+	guardian_add_opinion_effect = { GUARDIAN = scope:guardian WARD_LIEGE = scope:ward_liege WARD = scope:ward }
+}

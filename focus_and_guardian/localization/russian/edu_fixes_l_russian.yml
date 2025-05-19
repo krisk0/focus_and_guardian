@@ -1,0 +1,83 @@
+﻿l_russian:
+
+  rule_edu_fix_tutor_requirement:0 "Самообучение: Требование к Опекуну"
+  setting_tutor_required:0 "Требуется Опекун"
+  setting_tutor_required_desc:0 "Нужен Опекун при Дворе для начала Самообучения"
+  setting_no_tutor_required:0 "Опекун НЕ требуется"
+  setting_no_tutor_required_desc:0 "НЕ нужен Опекун при Дворе для Самообучения"
+
+  edu_fix_start_story_decision:0 "Начать Самообучение"
+  edu_fix_start_story_decision_tooltip:0 ""
+  edu_fix_start_story_decision_desc:0 "Начните Самообучение и выберете, какие дети вызывают События, какие получают Опекуна, а какие игнорируются."
+  edu_fix_start_story_decision_confirm:0 "Начать"
+
+  edu_educate_someone:0 "У всех ли детей есть опекун?"
+  edu_educate_someone_confirm:0 "Да, проверю прямо сейчас"
+  edu_educate_someone_desc:0 "Проверить прямо сейчас, всем ли детям назначен опекун"
+  edu_educate_someone_tooltip:0 "Найти ребёнка без опекуна и ..."
+
+  edu_fix.7777.t:0 "Всё в порядке"
+  edu_fix.7777.d:0 "У всех есть опекун"
+
+  edu_fix_change_story_variables_decision:0 "Изменить Настройки Самообучения"
+  edu_fix_change_story_variables_decision_tooltip:0 ""
+  edu_fix_change_story_variables_decision_desc:0 "Выберете, какие дети вызывают События, какие получают Опекуна, а какие игнорируются."
+  edu_fix_change_story_variables_decision_confirm:0 "Изменить Настройки"
+
+  edu_fix_decision_tt_1:0 "Дети сгруппированы по родству с правителем:\n Правитель и Близкая родня\n Дальняя родня\n Династия\n Неродные придворные"
+  edu_fix_decision_tt_2:0 "Когда ребенку шесть лет или его опекун умирает, то вызвать событие:\n Спросить правителя\n Переназначить Опекуна\n Ничего не делать"
+
+
+  edu_fix.0002.t:0 "Выбор Опекуна"
+
+  edu_fix.0002.intro.desc:0 "Для [SCOPE.sC('ward_court_owner').Custom2('RelationToMeShort', SCOPE.sC('potential_ward'))] [potential_ward.GetShortUIName] не назначен опекун. "
+  edu_fix.0002.dead_guardian.desc:0 "В связи со смертью [potential_ward.MakeScope.Var('edu_fix_dead_guardian').Char.GetShortUIName], [potential_ward.GetTitledFirstNameNoTooltip]'s образование было прервано. Ради [potential_ward.GetHerHis] будущего назначен новый опекун "
+  edu_fix.0002.learning.desc:0 "Решено, что [potential_ward.GetHerHis] образование получит фокус в исследованиях и науке.\n\n"
+  edu_fix.0002.diplomacy.desc:0 "[potential_ward.GetHerHis|U] обучение получит фокус на дипломатии и переговорах.\n\n"
+  edu_fix.0002.intrigue.desc:0 "[potential_ward.GetHerHis|U] образование должно получить фокус на заговорах и интригах.\n\n"
+  edu_fix.0002.martial.desc:0 "Военное дело должно стать главным [potential_ward.GetHerHis] фокусом внимания во благо общества.\n\n"
+  edu_fix.0002.stewardship.desc:0 "Как основа правления, [potential_ward.GetHerHis] обучение будет включать торговлю и деловое администрирование.\n\n"
+  edu_fix.0002.nofocus.desc:0 "Еще не решено, что [potential_ward.GetSheHe] будет изучать.\n\n"
+  edu_fix.0002.outro.desc:0 "Кого мне выбрать, чтобы подготовить [potential_ward.GetTitledFirstNameNoTooltip] для мира взрослых?"
+
+  edu_fix.0002.a:0 "Я сам стану [potential_ward.GetHerHim] опекуном!"
+  edu_fix.0002.b:0 "[potential_guardian.GetTitledFirstNameNoTooltip] позаботится, чтобы у [potential_ward.GetHerHis] было надлежащее обучение."
+  edu_fix.0002.c:0 "[potential_guardian2.GetTitledFirstNameNoTooltip] хорошо подходит."
+  edu_fix.0002.d:0 "Возможно, я должен показать свое доверие к [potential_guardian_vassal.GetTitledFirstNameNoTooltip]."
+  edu_fix.0002.f:0 "[potential_guardian_parent.GetMotherFather|U] должна воспитывать [potential_guardian_parent.GetHerHis] ребенка."
+  edu_fix.0002.e:0 "Подумаю позже."
+
+  edu_fix.0003.t:0 "Задания Опекуна"
+  edu_fix.0003.intro.desc:0 "При управлении доменом у правителя немало забот. Микроуправление детьми обременяет.\n"
+
+  edu_fix.0003.settings.t:0 "#T Текущие настройки:#!\n"
+
+  edu_fix.0003.automation.desc:0 "Механика Самообучения: "
+  edu_fix.0003.self_and_close_family.desc:0 "Правитель и Близкая родня: "
+  edu_fix.0003.extended_family.desc:0 "Правитель и Дальняя родня: "
+  edu_fix.0003.dynasty.desc:0 "Династия правителя: "
+  edu_fix.0003.unrelated.desc:0 "Неродственные придворные: "
+
+  edu_fix.0003.enabled.desc:0 "#P Вкл#!\n"
+  edu_fix.0003.disabled.desc:0 "#N Выкл#!\n"
+  edu_fix.0003.enabled_inactive.desc:0 "#N Вкл, Пропал Наставник#!\n"
+
+  edu_fix.0003.event.desc:0 "#P Спросить Правителя#!\n"
+  edu_fix.0003.auto.desc:0 "#Z Переназначить Опекуна#!\n"
+  edu_fix.0003.nothing.desc:0 "#N Ничего не делать#!\n"
+
+  edu_fix.0003.a:0 "Переключить Все Самообучение"
+  edu_fix.0003.a.0:0 "Я могу справиться с некоторыми детьми!"
+  edu_fix.0003.a.1:0 "Возможно мне не помешает помощь"
+  edu_fix.0003.b:0 "Изменить настройку близкой родни"
+  edu_fix.0003.c:0 "Изменить настройку дальней родни"
+  edu_fix.0003.d:0 "Изменить настройку династии"
+  edu_fix.0003.e:0 "Изменить настройку придворного"
+  edu_fix.0003.f:0 "Выглядит замечательно!"
+
+  edu_fix_guardian_skill_excellent:0 "Навык Опекуна для текущего фокуса обучения #P лучший#!."
+  edu_fix_guardian_skill_good:0 "Навык Опекуна для текущего фокуса обучения #P хороший#!."
+  edu_fix_guardian_skill_average:0 "Навык Опекуна для текущего фокуса обучения #Z средний#!."
+  edu_fix_guardian_skill_poor:0 "Навык Опекуна для текущего фокуса обучения #N низкий#!."
+  edu_fix_guardian_skill_terrible:0 "Навык Опекуна для текущего фокуса обучения #N худший#!."
+  edu_fix_missing_focus:0 "У ребёнка нет фокуса обучения.\n Невозможно точно измерить навык стража."

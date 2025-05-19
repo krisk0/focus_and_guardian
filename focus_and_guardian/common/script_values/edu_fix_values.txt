@@ -1,0 +1,158 @@
+﻿
+educator_skill_value = {
+	value = 0
+
+	add = {
+		value = learning
+		multiply = educator_learning_skill_modifier_factor
+	}
+
+
+	if = {
+		limit = {
+			scope:potential_ward = {
+				has_focus = education_diplomacy
+			}
+		}
+		add = {
+			value = diplomacy
+			multiply = educator_skill_modifier_factor
+		}
+	}
+	if = {
+		limit = {
+			scope:potential_ward = {
+				has_focus = education_martial
+			}
+		}
+		add = {
+			value = martial
+			multiply = educator_skill_modifier_factor
+		}
+	}
+	if = {
+		limit = {
+			scope:potential_ward = {
+				has_focus = education_stewardship
+			}
+		}
+		add = {
+			value = stewardship
+			multiply = educator_skill_modifier_factor
+		}
+	}
+	if = {
+		limit = {
+			scope:potential_ward = {
+				has_focus = education_intrigue
+			}
+		}
+		add = {
+			value = intrigue
+			multiply = educator_skill_modifier_factor
+		}
+	}
+	if = {
+		limit = {
+			scope:potential_ward = {
+				has_focus = education_learning
+			}
+		}
+		add = {
+			value = learning
+			multiply = educator_skill_modifier_factor
+		}
+	}
+	if = {
+		limit = { has_trait = intellect_good_3 }
+		add = 15
+	}
+	if = {
+		limit = { has_trait = intellect_good_2 }
+		add = 10
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = intellect_good_1
+				has_trait = shrewd
+			}
+		}
+		add = 5
+	}
+	if = {
+		limit = { has_trait = intellect_bad_3 }
+		add = -15
+	}
+	if = {
+		limit = { has_trait = intellect_bad_2 }
+		add = -10
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = intellect_bad_1
+				has_trait = dull
+			}
+		}
+		add = -5
+	}
+	if = {
+		limit = { culture = { has_cultural_parameter = better_ward_education } }
+		add = 10
+	}
+
+}
+
+educator_priority_value = {
+	value = educator_skill_value
+	if = {
+		limit = {
+			is_witch_trigger = yes
+			trigger_if = {
+				limit = { scope:edu_fix_story.var:edu_fix_witch_relation = flag:dynasty }
+				exists = scope:ward_employer.dynasty
+				scope:potential_ward = {
+					exists = dynasty
+					dynasty = scope:ward_employer.dynasty
+				}
+			}
+			trigger_if = {
+				limit = { scope:edu_fix_story.var:edu_fix_witch_relation = flag:extended_family }
+				scope:potential_ward = {
+					is_close_or_extended_family_of = scope:ward_employer
+				}
+			}
+			trigger_if = {
+				limit = { scope:edu_fix_story.var:edu_fix_witch_relation = flag:self_and_close_family }
+				OR = {
+					scope:potential_ward = scope:ward_employer
+					scope:potential_ward = {
+						is_close_family_of = scope:ward_employer
+					}
+				}
+			}
+		}
+		add = {
+			value = 5
+			if = {
+				limit = { scope:edu_fix_story.var:edu_fix_witch_priority = flag:off }
+				multiply = 0
+			}
+			if = {
+				limit = { scope:edu_fix_story.var:edu_fix_witch_priority = flag:high }
+				multiply = 2
+			}
+		}
+	}
+}
+
+learning_minus_3 = {
+	value = learning
+	subtract = 3
+}
+
+diplomacy_minus_3 = {
+	value = diplomacy
+	subtract = 3
+}

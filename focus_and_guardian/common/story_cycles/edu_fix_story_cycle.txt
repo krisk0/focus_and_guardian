@@ -1,0 +1,248 @@
+﻿edu_fix_variables_story = {
+	on_setup = {
+		set_variable = {
+			name = edu_fix_automation
+			value = yes
+		}
+		set_variable = {
+			name = edu_fix_self_and_close_family
+			value = flag:event
+		}
+		set_variable = {
+			name = edu_fix_extended_family
+			value = flag:auto
+		}
+		set_variable = {
+			name = edu_fix_dynasty
+			value = flag:auto
+		}
+		set_variable = {
+			name = edu_fix_unrelated
+			value = flag:nothing
+		}
+		set_variable = {
+			name = edu_fix_gender
+			value = flag:both
+		}
+		set_variable = {
+			name = edu_fix_university_automation
+			value = yes
+		}
+		set_variable = {
+			name = edu_fix_university_gender
+			value = flag:both
+		}
+		set_variable = {
+			name = edu_fix_university_relation
+			value = flag:self_and_close_family
+		}
+		set_variable = {
+			name = edu_fix_special_automation
+			value = yes
+		}
+		set_variable = {
+			name = edu_fix_witch_relation
+			value = flag:self_and_close_family
+		}
+		set_variable = {
+			name = edu_fix_witch_priority
+			value = flag:off
+		}
+		set_variable = {
+			name = edu_fix_culture_relation
+			value = flag:self_and_close_family
+		}
+		set_variable = {
+			name = edu_fix_culture_priority
+			value = flag:off
+		}
+		set_variable = {
+			name = edu_fix_faith_relation
+			value = flag:self_and_close_family
+		}
+		set_variable = {
+			name = edu_fix_faith_priority
+			value = flag:off
+		}
+	}
+
+	effect_group = { #effect group to update story cycles from old versions
+		days = 1
+		trigger = {
+			NOT = {
+				exists = var:edu_fix_gender
+				exists = var:edu_fix_university_automation
+				exists = var:edu_fix_university_gender
+				exists = var:edu_fix_university_relation
+				exists = var:edu_fix_special_automation
+				exists = var:edu_fix_witch_relation
+				exists = var:edu_fix_witch_priority
+				exists = var:edu_fix_culture_relation
+				exists = var:edu_fix_culture_priority
+				exists = var:edu_fix_faith_relation
+				exists = var:edu_fix_faith_priority
+			}
+		}
+
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_gender }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_gender
+					value = flag:both
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_university_automation }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_university_automation
+					value = yes
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_university_gender }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_university_gender
+					value = flag:both
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_university_relation }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_university_relation
+					value = flag:self_and_close_family
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_special_automation }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_special_automation
+					value = yes
+				}
+			}
+		}
+		
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_witch_relation }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_witch_relation
+					value = flag:self_and_close_family
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_witch_priority }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_witch_priority
+					value = flag:off
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_culture_relation }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_culture_relation
+					value = flag:self_and_close_family
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_culture_priority }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_culture_priority
+					value = flag:off
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_faith_relation }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_faith_relation
+					value = flag:self_and_close_family
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = {
+				NOT = { exists = var:edu_fix_faith_priority }
+			}
+			effect = {
+				set_variable = {
+					name = edu_fix_faith_priority
+					value = flag:off
+				}
+			}
+		}
+
+		# triggered_effect = {
+		# 	trigger = {
+		# 		story_owner = {
+		# 			is_ai = yes
+		# 		}
+		# 	}
+		# 	effect = {
+		# 		end_story = yes
+		# 	}
+		# }
+	}
+
+	on_owner_death = {
+		if = {
+			limit = { 
+				story_owner.player_heir ?= {
+					NOT = {
+						any_owned_story = {
+							story_type = edu_fix_variables_story
+						} 
+					}
+				}
+			}
+			make_story_owner = story_owner.player_heir
+		}
+		else = {
+			end_story = yes
+		}
+	}
+}

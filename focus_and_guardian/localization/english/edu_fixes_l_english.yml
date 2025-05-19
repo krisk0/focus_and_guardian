@@ -1,0 +1,143 @@
+﻿l_english:
+
+  rule_edu_fix_tutor_requirement:0 "Education Automation: Tutor Requirement"
+  setting_tutor_required:0 "Tutor Required"
+  setting_tutor_required_desc:0 "A court tutor is required for automation"
+  setting_no_tutor_required:0 "No Tutor Required"
+  setting_no_tutor_required_desc:0 "A court tutor is NOT required for automation"
+
+  edu_fix_start_story_decision:0 "Start Education Automation"
+  edu_fix_start_story_decision_tooltip:0 ""
+  edu_fix_start_story_decision_desc:0 "Initialize Education Automation and pick which children trigger events, which automatically get guardians and who is ignored."
+  edu_fix_start_story_decision_confirm:0 "Start"
+
+  edu_fix_educate_someone:0 "Are all my children educated?"
+  edu_fix_educate_someone_confirm:0 "Yes, need to check right now"
+  edu_fix_educate_someone_desc:0 "Check right now, if some child needs a guide"
+  edu_fix_educate_someone_tooltip:0 "Find a child that has no guardian and ..."
+
+  edu_fix.7777.t:0 "Nothing to do"
+  edu_fix.7777.d:0 "All children of appropriate age have a guardian"
+
+  edu_fix_change_story_variables_decision:0 "Change Education Automation Settings"
+  edu_fix_change_story_variables_decision_tooltip:0 ""
+  edu_fix_change_story_variables_decision_desc:0 "Change which children trigger events, which automatically get guardians and who is ignored."
+  edu_fix_change_story_variables_decision_confirm:0 "Change Settings"
+
+  edu_fix_decision_tt_1:0 "Children are grouped on how they are related to the ruler:\n Ruler and Close Family\n Extended Family\n Dynasty\n Unrelated Courtiers"
+  edu_fix_decision_tt_2:0 "One of the following happen when a child is nearly six or their guardian dies:\n Ask Ruler (Fire Event)\n Automatically Assign Guardian\n Do Nothing"
+
+
+  edu_fix.0002.t:0 "Choosing a Guardian"
+
+  edu_fix.0002.intro.desc:0 "My [SCOPE.sC('ward_employer').Custom2('RelationToMeShort', SCOPE.sC('potential_ward'))] [potential_ward.GetShortUIName] currently has no guardian. "
+  edu_fix.0002.dead_guardian.desc:0 "With the death of [potential_ward.MakeScope.Var('edu_fix_dead_guardian').Char.GetShortUIName], [potential_ward.GetTitledFirstNameNoTooltip]'s education has been interupted. For the sake of [potential_ward.GetHerHis] future, a new guardian should be assigned. "
+  edu_fix.0002.learning.desc:0 "It has been decided that [potential_ward.GetHerHis] education will focus on academic and scholarly matters.\n\n"
+  edu_fix.0002.diplomacy.desc:0 "[potential_ward.GetHerHis|U] studies will focus on acts of diplomacy and negotiation.\n\n"
+  edu_fix.0002.intrigue.desc:0 "[potential_ward.GetHerHis|U] education shall revolve around plots, schemes and other intrigues.\n\n"
+  edu_fix.0002.martial.desc:0 "Warfare is to be [potential_ward.GetHerHis] primary focus. Training in martial matters are a key part of society.\n\n"
+  edu_fix.0002.stewardship.desc:0 "Being such a key part of being a ruler, [potential_ward.GetHerHis] instruction will involve trade and business administration.\n\n"
+  edu_fix.0002.nofocus.desc:0 "It is still undecided what [potential_ward.GetSheHe] will be studying.\n\n"
+  edu_fix.0002.outro.desc:0 "Who should I pick to prepare [potential_ward.GetTitledFirstNameNoTooltip] for the adult world?"
+
+  edu_fix.0002.a:0 "I'll educate [potential_ward.GetHerHim] myself!"
+  edu_fix.0002.b:0 "[potential_guardian.GetTitledFirstNameNoTooltip] will ensure [potential_ward.GetSheHe] gets a proper upbringing."
+  edu_fix.0002.c:0 "[potential_guardian2.GetTitledFirstNameNoTooltip] is fairly skilled as well."
+  edu_fix.0002.d:0 "Perhaps I should show my trust in [potential_guardian_vassal.GetTitledFirstNameNoTooltip]."
+  edu_fix.0002.e:0 "I will think on this later."
+  edu_fix.0002.e.tutor:0 "Don't I pay [tutor.GetTitledFirstName] to teach all children of the court?"
+  edu_fix.0002.f:0 "A [potential_guardian_parent.GetMotherFather] should raise [potential_guardian_parent.GetHerHis] own child."
+
+  edu_fix.0003.t:0 "Guardian Assignments"
+  edu_fix.0003.intro.desc:0 "While administrating a domain, a ruler already has quite a bit on their plate. Micromanaging children would certainly add a burden.\n"
+
+  edu_fix.0003.settings.t:0 "#T Current Settings:#!\n"
+
+  edu_fix.0003.automation.desc:0 "Automation: "
+  edu_fix.0003.self_and_close_family.desc:0 "Ruler and Close Family: "
+  edu_fix.0003.extended_family.desc:0 "Ruler's Extended Family: "
+  edu_fix.0003.dynasty.desc:0 "Ruler's Dynasty: "
+  edu_fix.0003.unrelated.desc:0 "Unrelated Courtiers: "
+
+  edu_fix.0003.enabled.desc:0 "#P Enabled#!\n"
+  edu_fix.0003.disabled.desc:0 "#N Disabled#!\n"
+  edu_fix.0003.enabled_inactive.desc:0 "#N Enabled, Missing Court Tutor#!\n"
+
+  edu_fix.0003.event.desc:0 "#P Ask Ruler#!\n"
+  edu_fix.0003.auto.desc:0 "#Z Automatically Assign Guardian#!\n"
+  edu_fix.0003.nothing.desc:0 "#N Do Nothing#!\n"
+
+  edu_fix.0003.a:0 "Toggle All Automation"
+  edu_fix.0003.a.0:0 "I can handle some kids!"
+  edu_fix.0003.a.1:0 "Maybe I could use some help."
+  edu_fix.0003.b:0 "Change Close Family Setting"
+  edu_fix.0003.c:0 "Change Extended Family Setting"
+  edu_fix.0003.d:0 "Change Dynasty Setting"
+  edu_fix.0003.e:0 "Change Courtier Setting"
+  edu_fix.0003.f:0 "Looks good to me!"
+  edu_fix.0003.g:0 ""
+
+  edu_fix.0004.t:0 "University Reminders"
+
+  edu_fix.0004.intro.desc:0 "Universities are an amazing resource for education. However, they are expensive and it is not practical to pay tuition for all children of my court. \n"
+  edu_fix.0004.automation.desc:0 "University Reminders: "
+
+  edu_fix.0004.relation.desc:0 "Relation Requirement: "
+  edu_fix.0004.self_and_close_family.desc:0 "Ruler and Close Family\n" 
+  edu_fix.0004.extended_family.desc:0 "Ruler's Extended Family\n" 
+  edu_fix.0004.dynasty.desc:0 "Ruler's Dynasty\n"
+  edu_fix.0004.courtier.desc:0 "Courtiers\n"
+
+  edu_fix.0004.gender.desc:0 "Gender Requirement: "
+  edu_fix.0004.both.desc:0 "No Requirement"
+  edu_fix.0004.male.desc:0 "Male Only"
+  edu_fix.0004.female.desc:0 "Female Only"
+
+  edu_fix.0004.a:0 "Toggle University Reminders"
+  edu_fix.0004.b:0 "Change Relation Setting"
+  edu_fix.0004.c:0 "Change Gender Setting"
+  edu_fix.0004.d:0 "Previous Menu"
+
+  edu_fix.0005.t:0 "Preparing for the Future"  
+  edu_fix.0005.outro.desc:0 "My [SCOPE.sC('ward_employer').Custom2('RelationToMeShort', SCOPE.sC('potential_ward'))] [potential_ward.GetShortUIName] is approaching the age where the planning of [potential_ward.GetHerHis] formal education is finalized. [potential_ward.GetSheHe|U] would certainly benefit from attending university."
+
+  edu_fix.0005.a:0 "I will pay [potential_ward.GetHerHis] tuition."
+  edu_fix.0005.b:0 "The expense is not worth it at this time."
+
+  edu_fix.0006.t:0 "Education Automation"
+  edu_fix.0006.intro.desc:0 ""
+
+  edu_fix.0006.a:0 "Guardian Settings"
+  edu_fix.0006.b:0 "University Settings"
+  edu_fix.0006.c:0 "Special Settings"
+
+  edu_fix.0007.t:0 "Special Considerations"
+  edu_fix.0007.automation.desc:0 "Special Automation: "
+  edu_fix.0007.witch_relation.desc:0 "Witch Relation Requirement: "
+  edu_fix.0007.witch_priority.desc:0 "Witch Guardian Priority: "
+  edu_fix.0007.off:0 "Off\n"
+  edu_fix.0007.low:0 "Low\n"
+  edu_fix.0007.high:0 "High\n"
+
+  edu_fix.0007.a:0 "Toggle All Special Settings"
+  edu_fix.0007.b:0 "Witch: Change Relation Setting"
+  edu_fix.0007.c:0 "Witch: Change Priority Setting"
+
+
+  edu_fix_guardian_skill_excellent:0 "Guardian skill for the current learning focus is #P excellent#!."
+  edu_fix_guardian_skill_good:0 "Guardian skill for the current learning focus is #P good#!."
+  edu_fix_guardian_skill_average:0 "Guardian skill for the current learning focus is #Z average#!."
+  edu_fix_guardian_skill_poor:0 "Guardian skill for the current learning focus is #N poor#!."
+  edu_fix_guardian_skill_terrible:0 "Guardian skill for the current learning focus is #N terrible#!."
+  edu_fix_missing_focus:0 "Child is missing education focus.\nCannot accurately measure guardian skill."
+
+  edu_fix_tutor_not_guardian:0 "@alert_icon!Child will NOT have a guardian to influence personality, but will treat your court tutor as their guardian for education"
+  edu_fix_tutor_better:0 "@alert_icon!Selected guardian is less skilled than your court tutor."
+
+  edu_fix_witch_education_tt:0 "Has a chance to be taught witchcraft"
+
+  send_to_university_interaction:0 "Send to University"
+  guardian_has_access_to_university:0 "Child's guardian has access to a university"
+  you_have_access_to_university:0 "You have access to a university"
+  not_already_at_university:0 "Child has not already been sent to a university"
+  send_to_university_interaction_desc:0 "Pay for [recipient.GetShortUINameNoTooltip] to attend a university, increasing [recipient.GetHerHis] chance of receiving a better education trait."

@@ -1,0 +1,181 @@
+﻿#on_birthday = {
+#   on_actions = {
+#		delay = { days = 7 }
+#		edu_fix_on_action
+#		edu_fix_university_on_action
+#	}
+#}
+#
+#edu_fix_on_action = {
+#	trigger = {
+#		age = 6
+#	}
+#
+#	events = {
+#		edu_fix.0001
+#	}
+#}
+
+on_birthday = {
+   on_actions = {
+		delay = { days = 7 }
+		edu_fix_vars_on_action
+		edu_fix_university_on_action
+	}
+}
+
+# remove stale flag
+edu_fix_vars_on_action = {
+	trigger = {
+		OR = {
+			num_of_relation_guardian > 0
+			is_adult = yes
+		}
+	}
+	effect = {
+		remove_variable = edu_fix_allowed
+	}
+}
+
+edu_fix_university_on_action = {
+	trigger = {
+		age = 12
+		OR = {
+			employer_university_access_trigger = yes
+			trigger_if = {
+				limit = {
+					any_relation = {
+						type = guardian
+						always = yes
+					}
+				}
+				guardian_university_access_trigger = yes
+			}
+		}
+		already_sent_to_university_trigger = no
+		exists = employer
+		employer = {
+			any_owned_story = {
+				story_type = edu_fix_variables_story
+				var:edu_fix_university_automation = yes
+			} 
+			trigger_if = {
+				limit = { has_game_rule = tutor_required }
+				employs_court_position = court_tutor_court_position
+			}
+		}
+	}
+
+	effect = {
+		save_scope_as = potential_ward
+		employer = {
+			save_scope_as = ward_employer
+			random_owned_story = {
+				limit = { story_type = edu_fix_variables_story }
+				save_scope_as = edu_fix_story
+			}
+			if = {
+				limit = {
+					trigger_if = {
+						limit = { scope:edu_fix_story.var:edu_fix_university_relation = flag:self_and_close_family }
+						OR = {
+							scope:potential_ward = scope:ward_employer
+							scope:potential_ward = {
+								is_close_family_of = scope:ward_employer
+							}
+						}
+					}
+					trigger_else_if = {
+						limit = { scope:edu_fix_story.var:edu_fix_university_relation = flag:extended_family }
+						OR = {
+							scope:potential_ward = scope:ward_employer
+							scope:potential_ward = {
+								is_close_or_extended_family_of = scope:ward_employer
+							}
+						}
+					}
+					trigger_else_if = {
+						limit = { scope:edu_fix_story.var:edu_fix_university_relation = flag:extended_family }
+						OR = {
+							scope:potential_ward = scope:ward_employer
+							scope:potential_ward = {
+								is_close_or_extended_family_of = scope:ward_employer
+							}
+							AND = {
+								exists = scope:ward_employer.dynasty
+								scope:potential_ward = {
+									exists = dynasty
+									dynasty = scope:ward_employer.dynasty
+								}
+							}
+						}
+					}
+					trigger_else = {
+						always = yes
+					}
+
+					trigger_if = {
+						limit = { scope:edu_fix_story.var:edu_fix_university_gender = flag:male }
+						scope:potential_ward = { is_male = yes }
+					}
+					trigger_else_if = {
+						limit = { scope:edu_fix_story.var:edu_fix_university_gender = flag:female }
+						scope:potential_ward = { is_female = yes }
+					}
+					trigger_else = {
+						always = yes
+					}
+				}
+				trigger_event = edu_fix.0005
+			}
+			
+		}
+	}
+}
+
+on_death_relation_ward = {
+	on_actions = {
+		edu_fix_guardian_death_on_action
+	}
+}
+
+
+
+edu_fix_guardian_death_on_action = {
+	effect = {
+		if = {
+			limit = {
+				scope:target ?= {
+					is_alive = yes
+				}
+			}
+		}
+		scope:target = {
+			set_variable = {
+				name = edu_fix_dead_guardian
+				value = root
+			}
+		set_variable = edu_fix_allowed
+		trigger_event = {
+				id = edu_fix.0001
+			}
+		}
+	}
+}
+
+edu_fix_guardian_removed_on_action = {
+	effect = {
+		scope:target = {
+			set_variable = {
+				name = edu_fix_removed_guardian
+				value = root
+			}
+            set_variable = edu_fix_allowed
+			trigger_event = {
+				id = edu_fix.0001
+						# maybe player will choose guardian himself?
+				days = 1
+			}
+		}
+	}
+}

@@ -1,0 +1,1135 @@
+﻿namespace = edu_fix
+
+edu_fix.9999 = {
+	hidden = yes
+	trigger = {
+		any_owned_story = {
+			story_type = edu_fix_variables_story
+			var:edu_fix_automation = yes
+		}
+		# Do not emerge parallel event chain
+		NOT = { has_variable = edu_fix_eldest_lock }
+	}
+	immediate = {
+		ordered_courtier = {
+			limit = {
+				is_adult = no
+				is_ai = yes
+				age >= 5.8
+				is_alive = yes
+				num_of_relation_guardian = 0
+                NOT = { exists = var:ward_travelling_to_guardian }
+			}
+			order_by = age # As of version 1.15.0.2, children of same age in
+						   #  years are not properly sorted. In UI, too
+			save_scope_as = child_to_educate
+		}
+		if = {
+			limit = { exists = scope:child_to_educate }
+			# Do not emerge parallel event chain
+			set_variable = edu_fix_eldest_lock
+			scope:child_to_educate = { trigger_event = edu_fix.8888 }
+		}
+		else = {
+			trigger_event = edu_fix.7777 # report that no one can be educated
+		}
+	}
+}
+
+edu_fix.7777 = {
+	type = character_event
+	theme = family
+	title = edu_fix.7777.t
+	desc = edu_fix.7777.d
+	override_background = {
+		reference = temple_generic
+	}
+
+	option = {
+		name = OK_BUTTON
+	}
+}
+
+#Fired when a child is close to six or older and does not have a guard
+edu_fix.8888 = {
+	hidden = yes
+	trigger = {
+		root = {
+			is_adult = no
+			is_alive = yes
+			is_ai = yes
+			age >= 5.8          # nearly six
+		}
+		employer ?= {
+			any_owned_story = {
+				story_type = edu_fix_variables_story
+				var:edu_fix_automation = yes
+			}
+		}
+	}
+	immediate = {
+		root = {
+			# Choose education focus, if not chosen, and education trait defined
+			if = {
+				limit = { has_any_focus = no }
+				set_variable = take_another
+				# Rule 1: Bossy/Rowdy/Charming → Martial
+				if = {
+					limit = {
+						OR = {
+							has_trait = bossy
+							has_trait = rowdy
+							has_trait = charming
+						}
+					}
+					set_focus = education_martial
+				}
+				# Rule 2: Pensive → Stewardship/Learning
+				else_if = {
+					limit = { has_trait = pensive }
+					if = {
+						limit = { stewardship >= learning_minus_3 }
+						set_focus = education_stewardship
+					}
+					else = {
+						set_focus = education_martial
+					}
+				}
+				# Rule 3: Curious → Stewardship/Diplomacy/Learning
+				else_if = {
+					limit = { has_trait = curious }
+					if = {
+						limit = {
+							stewardship >= diplomacy_minus_3
+							stewardship >= learning_minus_3
+						}
+						set_focus = education_stewardship
+					}
+					else_if = {
+						limit = { diplomacy >= learning }
+						set_focus = education_diplomacy
+					}
+					else = {
+						set_focus = education_learning
+					}
+				}
+			}
+		}
+		# Trigger guardian choice event, if focus chosen
+		if = {
+			limit = {
+				has_any_focus = yes
+				num_of_relation_guardian = 0
+				NOT = { exists = var:ward_travelling_to_guardian }
+				# TODO: imprisoned?
+			}
+			set_variable = edu_fix_allowed  # disable random spawn of edu_fix.0001
+			trigger_event = edu_fix.0001
+		}
+		else = {
+			# either end event chain, or redo with another child
+			employer = { remove_variable = edu_fix_eldest_lock }
+			if = {
+				limit = { has_variable = take_another }
+				remove_variable = take_another
+				employer = { trigger_event = edu_fix.9999 }
+			}
+		}
+	}
+}
+
+# Only runs if edu_fix_allowed flag is set. Check, prepare variables for tutor
+#  choice menu, emerge the menu (or choose automatically)
+edu_fix.0001 = {
+	hidden = yes
+	trigger = {
+		# TODO: imprisoned?
+		is_adult = no
+		has_any_focus = yes
+		# check for edu_fix_allowed ensures that no more than one event chain is active
+		has_variable = edu_fix_allowed
+		num_of_relation_guardian = 0
+		NOT = { exists = var:ward_travelling_to_guardian }
+		employer ?= {
+			any_owned_story = {
+				story_type = edu_fix_variables_story
+				var:edu_fix_automation = yes
+			}
+			trigger_if = {
+				limit = { has_game_rule = tutor_required }
+				employs_court_position = court_tutor_court_position
+			}
+		}
+	}
+
+	immediate = {
+		save_scope_as = potential_ward
+		employer = {
+			save_scope_as = ward_employer
+			if = {
+				limit = {
+					employs_court_position = court_tutor_court_position
+				}
+				random_court_position_holder = {
+					type = court_tutor_court_position
+					save_scope_as = tutor
+				}
+			}
+			random_owned_story = {
+				limit = { story_type = edu_fix_variables_story }
+				save_scope_as = edu_fix_story
+			}
+			ordered_courtier = {
+				limit = {
+					is_physically_able_adult = yes
+					num_of_relation_ward < 2
+					is_ai = yes
+					trigger_if = {
+						limit = {
+							exists = scope:tutor
+						}
+						NOT = {
+							this = scope:tutor
+						}
+					}
+
+					trigger_if = {
+						limit = {
+							exists = primary_spouse
+						}
+						OR = {
+							NOT = {
+								primary_spouse = scope:ward_employer
+								is_close_family_of = scope:ward_employer
+							}
+							scope:potential_ward = {
+								is_close_family_of = scope:ward_employer
+							}
+						}
+					}
+				}
+				order_by = educator_priority_value
+				position = 0
+				save_scope_as = potential_guardian
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					scope:potential_ward = scope:ward_employer
+					scope:potential_ward = {
+						is_close_family_of = scope:ward_employer
+					}
+				}
+			}
+			edu_fix_switch_selector_effect = { RELATION = self_and_close_family }
+		}
+		else_if = {
+			limit = {
+				scope:potential_ward = {
+					is_close_or_extended_family_of = scope:ward_employer
+				}
+			}
+			edu_fix_switch_selector_effect = { RELATION = extended_family }
+		}
+		else_if = {
+			limit = {
+				exists = scope:ward_employer.dynasty
+				scope:potential_ward = {
+					exists = dynasty
+					dynasty = scope:ward_employer.dynasty
+				}
+			}
+			edu_fix_switch_selector_effect = { RELATION = dynasty }
+		}
+		else = {
+			edu_fix_switch_selector_effect = { RELATION = unrelated }
+		}
+	}
+}
+
+#Event to ask ruler who should be guardian
+edu_fix.0002 = {
+	title = edu_fix.0002.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:potential_ward = { has_variable = edu_fix_dead_guardian } }
+				desc = edu_fix.0002.dead_guardian.desc
+			}
+			desc = edu_fix.0002.intro.desc
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:potential_ward = {
+						has_focus = education_learning
+					}
+				}
+				desc = edu_fix.0002.learning.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:potential_ward = {
+						has_focus = education_diplomacy
+					}
+				}
+				desc = edu_fix.0002.diplomacy.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:potential_ward = {
+						has_focus = education_intrigue
+					}
+				}
+				desc = edu_fix.0002.intrigue.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:potential_ward = {
+						has_focus = education_martial
+					}
+				}
+				desc = edu_fix.0002.martial.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:potential_ward = {
+						has_focus = education_stewardship
+					}
+				}
+				desc = edu_fix.0002.stewardship.desc
+			}
+			desc = edu_fix.0002.nofocus.desc
+		}
+		desc = edu_fix.0002.outro.desc
+	}
+	theme = family
+
+	left_portrait = {
+		character = scope:potential_ward
+		triggered_animation = {
+			trigger = { scope:potential_ward = { has_trait = curious } }
+			animation = personality_irrational
+		}
+		triggered_animation = {
+			trigger = { scope:potential_ward = { has_trait = rowdy } }
+			animation = personality_bold
+		}
+		triggered_animation = {
+			trigger = { scope:potential_ward = { has_trait = bossy } }
+			animation = personality_callous
+		}
+		triggered_animation = {
+			trigger = { scope:potential_ward = { has_trait = charming } }
+			animation = personality_compassionate
+		}
+		triggered_animation = {
+			trigger = { scope:potential_ward = { has_trait = pensive } }
+			animation = personality_cynical
+		}
+		animation = idle
+	}
+	right_portrait = {
+		trigger = { exists = scope:potential_guardian }
+		character = scope:potential_guardian
+	}
+	lower_center_portrait = {
+		trigger = { exists = scope:potential_guardian2 }
+		character = scope:potential_guardian2
+	}
+	lower_right_portrait = {
+		trigger = { exists = scope:potential_guardian_vassal }
+		character = scope:potential_guardian_vassal
+	}
+
+	immediate = {
+		ordered_courtier = {
+			limit = {
+				is_physically_able_adult = yes
+				num_of_relation_ward < 2
+				is_ai = yes
+				NOT = { this = scope:potential_guardian }
+			}
+			order_by = educator_skill_value
+			position = 0
+			save_scope_as = potential_guardian2
+		}
+		ordered_vassal = {
+			limit = {
+				is_physically_able_adult = yes
+				num_of_relation_ward < 2
+				is_ai = yes
+			}
+			order_by = educator_skill_value
+			position = 0
+			save_scope_as = potential_guardian_vassal
+		}
+		ordered_courtier = {
+			limit = {
+				is_physically_able_adult = yes
+				num_of_relation_ward < 2
+				is_ai = yes
+				NOT = { this = scope:potential_guardian }
+				NOT = { this = scope:potential_guardian2 }
+				NOT = { this = ROOT }
+				is_parent_of = scope:potential_ward
+			}
+			order_by = educator_skill_value
+			position = 0
+			save_scope_as = potential_guardian_parent
+		}
+	}
+
+	option = {
+
+		name = edu_fix.0002.a
+
+		edu_fix_guardian_skill_tt_effect = { GUARDIAN = root }
+		#add_gold = educator_skill_value
+
+		trigger = {
+			is_physically_able_adult = yes
+			num_of_relation_ward < 2
+			scope:potential_ward = {
+				num_of_relation_guardian = 0
+			}
+		}
+		edu_fix_assign_guardian_effect = { GUARDIAN = root }
+	}
+
+	option = {
+
+		name = edu_fix.0002.b
+
+		edu_fix_guardian_skill_tt_effect = { GUARDIAN = scope:potential_guardian }
+		#add_gold = scope:potential_guardian.educator_skill_value
+
+		trigger = {
+			scope:potential_guardian ?= {
+				num_of_relation_ward < 2
+			}
+			scope:potential_ward = {
+				num_of_relation_guardian = 0
+			}
+		}
+		edu_fix_assign_guardian_effect = { GUARDIAN = scope:potential_guardian }
+	}
+
+	option = {
+
+		name = edu_fix.0002.c
+
+		edu_fix_guardian_skill_tt_effect = { GUARDIAN = scope:potential_guardian2 }
+		#add_gold = scope:potential_guardian2.educator_skill_value
+
+		trigger = {
+			scope:potential_guardian2 ?= {
+				num_of_relation_ward < 2
+			}
+			scope:potential_ward = {
+				num_of_relation_guardian = 0
+			}
+		}
+		edu_fix_assign_guardian_effect = { GUARDIAN = scope:potential_guardian2 }
+	}
+
+	option = {
+		name = edu_fix.0002.d
+
+		edu_fix_guardian_skill_tt_effect = { GUARDIAN = scope:potential_guardian_vassal }
+		#add_gold = scope:potential_guardian_vassal.educator_skill_value
+
+		trigger = {
+			scope:potential_guardian_vassal ?= {
+				num_of_relation_ward < 2
+			}
+			scope:potential_ward = {
+				num_of_relation_guardian = 0
+			}
+		}
+		edu_fix_assign_guardian_effect = { GUARDIAN = scope:potential_guardian_vassal }
+	}
+
+	option = {
+		name = edu_fix.0002.f
+
+		edu_fix_guardian_skill_tt_effect = { GUARDIAN = scope:potential_guardian_parent }
+		#add_gold = scope:potential_guardian_vassal.educator_skill_value
+
+		trigger = {
+			scope:potential_guardian_parent ?= {
+				num_of_relation_ward < 2
+			}
+			scope:potential_ward = {
+				num_of_relation_guardian = 0
+			}
+		}
+		edu_fix_assign_guardian_effect = { GUARDIAN = scope:potential_guardian_parent }
+	}
+
+	option = {
+		name = {
+			trigger = {
+				employs_court_position = court_tutor_court_position
+			}
+			text = edu_fix.0002.e.tutor
+		}
+		name = {
+			text = edu_fix.0002.e
+		}
+		if = {
+			limit = {
+				exists = scope:tutor
+			}
+			custom_tooltip = edu_fix_tutor_not_guardian
+			edu_fix_guardian_skill_tt_effect = { GUARDIAN = scope:tutor }
+		}
+	}
+}
+
+#Setting Changing event
+edu_fix.0003 = {
+	title = edu_fix.0003.t
+	theme = family
+	desc = {
+		#desc = edu_fix.0003.intro.desc
+
+		desc = edu_fix.0003.settings.t
+		desc = edu_fix.0003.automation.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_automation = yes
+					trigger_if = {
+						limit = { has_game_rule = tutor_required }
+						employs_court_position = court_tutor_court_position
+					}
+				}
+				desc = edu_fix.0003.enabled.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_automation = yes
+					trigger_if = {
+						limit = { has_game_rule = tutor_required }
+						NOT = { employs_court_position = court_tutor_court_position }
+					}
+				}
+				desc = edu_fix.0003.enabled_inactive.desc
+			}
+			desc = edu_fix.0003.disabled.desc
+		}
+		desc = edu_fix.0003.self_and_close_family.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_self_and_close_family = flag:event
+				}
+				desc = edu_fix.0003.event.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_self_and_close_family = flag:auto
+				}
+				desc = edu_fix.0003.auto.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_self_and_close_family = flag:nothing
+				}
+				desc = edu_fix.0003.nothing.desc
+			}
+		}
+		desc = edu_fix.0003.extended_family.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_extended_family = flag:event
+				}
+				desc = edu_fix.0003.event.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_extended_family = flag:auto
+				}
+				desc = edu_fix.0003.auto.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_extended_family = flag:nothing
+				}
+				desc = edu_fix.0003.nothing.desc
+			}
+		}
+		desc = edu_fix.0003.dynasty.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_dynasty = flag:event
+				}
+				desc = edu_fix.0003.event.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_dynasty = flag:auto
+				}
+				desc = edu_fix.0003.auto.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_dynasty = flag:nothing
+				}
+				desc = edu_fix.0003.nothing.desc
+			}
+		}
+		desc = edu_fix.0003.unrelated.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_unrelated = flag:event
+				}
+				desc = edu_fix.0003.event.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_unrelated = flag:auto
+				}
+				desc = edu_fix.0003.auto.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_unrelated = flag:nothing
+				}
+				desc = edu_fix.0003.nothing.desc
+			}
+		}
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	immediate = {
+		# remove stale lock
+		remove_variable = edu_fix_eldest_lock
+		random_owned_story = {
+			limit = { story_type = edu_fix_variables_story }
+			save_scope_as = edu_fix_story
+		}
+	}
+
+	option = {
+		name = edu_fix.0003.a
+		if = {
+			limit = { scope:edu_fix_story.var:edu_fix_automation = yes }
+			scope:edu_fix_story = {
+				set_variable = {
+					name = edu_fix_automation
+					value = no
+				}
+			}
+		}
+		else = {
+			scope:edu_fix_story = {
+				set_variable = {
+					name = edu_fix_automation
+					value = yes
+				}
+			}
+		}
+		trigger_event = edu_fix.0003
+	}
+	option = {
+		name = edu_fix.0003.b
+		edu_fix_cycle_variable_effect = { RELATION = self_and_close_family }
+		trigger_event = edu_fix.0003
+	}
+	option = {
+		name = edu_fix.0003.c
+		edu_fix_cycle_variable_effect = { RELATION = extended_family }
+		trigger_event = edu_fix.0003
+	}
+	option = {
+		name = edu_fix.0003.d
+		edu_fix_cycle_variable_effect = { RELATION = dynasty }
+		trigger_event = edu_fix.0003
+	}
+	option = {
+		name = edu_fix.0003.e
+		edu_fix_cycle_variable_effect = { RELATION = unrelated }
+		trigger_event = edu_fix.0003
+	}
+	option = {
+		name = edu_fix.0004.d
+		trigger_event = edu_fix.0006
+	}
+	option = {
+		name = edu_fix.0003.f
+	}
+}
+
+#University Settings Event
+edu_fix.0004 = {
+	title = edu_fix.0004.t
+	theme = family
+	desc = {
+		desc = edu_fix.0004.intro.desc
+
+		desc = edu_fix.0003.settings.t
+		desc = edu_fix.0004.automation.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_automation = yes
+					trigger_if = {
+						limit = { has_game_rule = tutor_required }
+						employs_court_position = court_tutor_court_position
+					}
+				}
+				desc = edu_fix.0003.enabled.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_automation = yes
+					trigger_if = {
+						limit = { has_game_rule = tutor_required }
+						NOT = { employs_court_position = court_tutor_court_position }
+					}
+				}
+				desc = edu_fix.0003.enabled_inactive.desc
+			}
+			desc = edu_fix.0003.disabled.desc
+		}
+		desc = edu_fix.0004.relation.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_relation = flag:self_and_close_family
+				}
+				desc = edu_fix.0004.self_and_close_family.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_relation = flag:extended_family
+				}
+				desc = edu_fix.0004.extended_family.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_relation = flag:dynasty
+				}
+				desc = edu_fix.0004.dynasty.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_relation = flag:courtier
+				}
+				desc = edu_fix.0004.courtier.desc
+			}
+		}
+		desc = edu_fix.0004.gender.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_gender = flag:both
+				}
+				desc = edu_fix.0004.both.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_gender = flag:male
+				}
+				desc = edu_fix.0004.male.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_gender = flag:female
+				}
+				desc = edu_fix.0004.female.desc
+			}
+		}
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	immediate = {
+		random_owned_story = {
+			limit = { story_type = edu_fix_variables_story }
+			save_scope_as = edu_fix_story
+		}
+	}
+
+	option = {
+		name = edu_fix.0004.a
+		if = {
+			limit = { scope:edu_fix_story.var:edu_fix_university_automation = yes }
+			scope:edu_fix_story = {
+				set_variable = {
+					name = edu_fix_university_automation
+					value = no
+				}
+			}
+		}
+		else = {
+			scope:edu_fix_story = {
+				set_variable = {
+					name = edu_fix_university_automation
+					value = yes
+				}
+			}
+		}
+		trigger_event = edu_fix.0004
+	}
+	option = {
+		name = edu_fix.0004.b
+		switch = {
+			trigger = scope:edu_fix_story.var:edu_fix_university_relation
+			flag:self_and_close_family = { scope:edu_fix_story = { set_variable = { name = edu_fix_university_relation value = flag:extended_family} } }
+			flag:extended_family = { scope:edu_fix_story = { set_variable = { name = edu_fix_university_relation value = flag:dynasty} } }
+			flag:dynasty = { scope:edu_fix_story = { set_variable = { name = edu_fix_university_relation value = flag:courtier} } }
+			flag:courtier = { scope:edu_fix_story = { set_variable = { name = edu_fix_university_relation value = flag:self_and_close_family} } }
+		}
+		trigger_event = edu_fix.0004
+	}
+	option = {
+		name = edu_fix.0004.c
+		switch = {
+			trigger = scope:edu_fix_story.var:edu_fix_university_gender
+			flag:both = { scope:edu_fix_story = { set_variable = { name = edu_fix_university_gender value = flag:male} } }
+			flag:male = { scope:edu_fix_story = { set_variable = { name = edu_fix_university_gender value = flag:female} } }
+			flag:female = { scope:edu_fix_story = { set_variable = { name = edu_fix_university_gender value = flag:both} } }
+		}
+		trigger_event = edu_fix.0004
+	}
+	option = {
+		name = edu_fix.0004.d
+		trigger_event = edu_fix.0006
+	}
+	option = {
+		name = edu_fix.0003.f
+	}
+}
+
+#University Reminder Event
+edu_fix.0005 = {
+	title = edu_fix.0005.t
+	desc = {
+		desc = edu_fix.0005.outro.desc
+	}
+	theme = family
+
+	left_portrait = {
+		character = scope:potential_ward
+		triggered_animation = {
+			trigger = { scope:potential_ward = { has_trait = curious } }
+			animation = personality_irrational
+		}
+		triggered_animation = {
+			trigger = { scope:potential_ward = { has_trait = rowdy } }
+			animation = personality_bold
+		}
+		triggered_animation = {
+			trigger = { scope:potential_ward = { has_trait = bossy } }
+			animation = personality_callous
+		}
+		triggered_animation = {
+			trigger = { scope:potential_ward = { has_trait = charming } }
+			animation = personality_compassionate
+		}
+		triggered_animation = {
+			trigger = { scope:potential_ward = { has_trait = pensive } }
+			animation = personality_cynical
+		}
+		animation = idle
+	}
+	right_portrait = {
+		trigger = { exists = scope:current_guardian }
+		character = scope:current_guardian
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				scope:potential_ward = {
+					NOT = { num_of_relation_guardian = 0 }
+				}
+			}
+		}
+		scope:potential_ward = {
+			random_relation = {
+				type = guardian
+				save_scope_as = current_guardian
+			}
+		}
+	}
+
+	option = {
+
+		name = edu_fix.0005.a
+
+		show_as_unavailable = { always = yes }
+
+		trigger = {
+			gold >= monumental_gold_value
+
+			scope:potential_ward = {
+				OR = {
+					guardian_university_access_trigger = yes
+					employer_university_access_trigger = yes
+				}
+				already_sent_to_university_trigger = no
+			}
+		}
+
+		remove_short_term_gold = monumental_gold_value
+
+		scope:potential_ward = {
+			custom_tooltip = is_sent_to_university
+			add_character_flag = {
+				flag = studying_at_university
+				years = 17
+			}
+		}
+	}
+
+	option = {
+
+		name = edu_fix.0005.b
+
+	}
+
+}
+
+edu_fix.0006 = { #setting decision event
+	title = edu_fix.0006.t
+	theme = family
+	desc = {
+		desc = edu_fix.0003.intro.desc
+
+		desc = edu_fix.0003.settings.t
+		desc = edu_fix.0003.automation.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_automation = yes
+					trigger_if = {
+						limit = { has_game_rule = tutor_required }
+						employs_court_position = court_tutor_court_position
+					}
+				}
+				desc = edu_fix.0003.enabled.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_automation = yes
+					trigger_if = {
+						limit = { has_game_rule = tutor_required }
+						NOT = { employs_court_position = court_tutor_court_position }
+					}
+				}
+				desc = edu_fix.0003.enabled_inactive.desc
+			}
+			desc = edu_fix.0003.disabled.desc
+		}
+		desc = edu_fix.0004.automation.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_automation = yes
+					trigger_if = {
+						limit = { has_game_rule = tutor_required }
+						employs_court_position = court_tutor_court_position
+					}
+				}
+				desc = edu_fix.0003.enabled.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_university_automation = yes
+					trigger_if = {
+						limit = { has_game_rule = tutor_required }
+						NOT = { employs_court_position = court_tutor_court_position }
+					}
+				}
+				desc = edu_fix.0003.enabled_inactive.desc
+			}
+			desc = edu_fix.0003.disabled.desc
+		}
+	}
+
+	immediate = {
+		random_owned_story = {
+			limit = { story_type = edu_fix_variables_story }
+			save_scope_as = edu_fix_story
+		}
+	}
+
+	option = {
+		name = edu_fix.0006.a
+		trigger_event = edu_fix.0003
+	}
+
+	option = {
+		name = edu_fix.0006.b
+		trigger_event = edu_fix.0004
+	}
+
+	option = {
+		name = edu_fix.0006.c
+		trigger_event = edu_fix.0007
+	}
+
+	option = {
+		name = edu_fix.0003.f
+	}
+}
+
+#Special Settings Event
+edu_fix.0007 = {
+	title = edu_fix.0007.t
+	theme = family
+	desc = {
+		#desc = edu_fix.0007.intro.desc
+
+		desc = edu_fix.0003.settings.t
+		desc = edu_fix.0007.automation.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_special_automation = yes
+					trigger_if = {
+						limit = { has_game_rule = tutor_required }
+						employs_court_position = court_tutor_court_position
+					}
+				}
+				desc = edu_fix.0003.enabled.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_special_automation = yes
+					trigger_if = {
+						limit = { has_game_rule = tutor_required }
+						NOT = { employs_court_position = court_tutor_court_position }
+					}
+				}
+				desc = edu_fix.0003.enabled_inactive.desc
+			}
+			desc = edu_fix.0003.disabled.desc
+		}
+		desc = edu_fix.0007.witch_relation.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_witch_relation = flag:self_and_close_family
+				}
+				desc = edu_fix.0004.self_and_close_family.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_witch_relation = flag:extended_family
+				}
+				desc = edu_fix.0004.extended_family.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_witch_relation = flag:dynasty
+				}
+				desc = edu_fix.0004.dynasty.desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_witch_relation = flag:courtier
+				}
+				desc = edu_fix.0004.courtier.desc
+			}
+		}
+		desc = edu_fix.0007.witch_priority.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_witch_priority = flag:off
+				}
+				desc = edu_fix.0007.off
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_witch_priority = flag:low
+				}
+				desc = edu_fix.0007.low
+			}
+			triggered_desc = {
+				trigger = {
+					scope:edu_fix_story.var:edu_fix_witch_priority = flag:high
+				}
+				desc = edu_fix.0007.high
+			}
+		}
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	immediate = {
+		random_owned_story = {
+			limit = { story_type = edu_fix_variables_story }
+			save_scope_as = edu_fix_story
+		}
+	}
+
+	option = {
+		name = edu_fix.0007.a
+		if = {
+			limit = { scope:edu_fix_story.var:edu_fix_special_automation = yes }
+			scope:edu_fix_story = {
+				set_variable = {
+					name = edu_fix_special_automation
+					value = no
+				}
+			}
+		}
+		else = {
+			scope:edu_fix_story = {
+				set_variable = {
+					name = edu_fix_special_automation
+					value = yes
+				}
+			}
+		}
+		trigger_event = edu_fix.0007
+	}
+	option = {
+		name = edu_fix.0007.b
+		switch = {
+			trigger = scope:edu_fix_story.var:edu_fix_witch_relation
+			flag:self_and_close_family = { scope:edu_fix_story = { set_variable = { name = edu_fix_witch_relation value = flag:extended_family} } }
+			flag:extended_family = { scope:edu_fix_story = { set_variable = { name = edu_fix_witch_relation value = flag:dynasty} } }
+			flag:dynasty = { scope:edu_fix_story = { set_variable = { name = edu_fix_witch_relation value = flag:courtier} } }
+			flag:courtier = { scope:edu_fix_story = { set_variable = { name = edu_fix_witch_relation value = flag:self_and_close_family} } }
+		}
+		trigger_event = edu_fix.0007
+	}
+	option = {
+		name = edu_fix.0007.c
+		switch = {
+			trigger = scope:edu_fix_story.var:edu_fix_witch_priority
+			flag:off = { scope:edu_fix_story = { set_variable = { name = edu_fix_witch_priority value = flag:low} } }
+			flag:low = { scope:edu_fix_story = { set_variable = { name = edu_fix_witch_priority value = flag:high} } }
+			flag:high = { scope:edu_fix_story = { set_variable = { name = edu_fix_witch_priority value = flag:off} } }
+		}
+		trigger_event = edu_fix.0007
+	}
+	option = {
+		name = edu_fix.0004.d
+		trigger_event = edu_fix.0006
+	}
+	option = {
+		name = edu_fix.0003.f
+	}
+}

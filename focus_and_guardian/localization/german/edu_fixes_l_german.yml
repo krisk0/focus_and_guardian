@@ -1,0 +1,75 @@
+﻿l_german:
+
+  rule_edu_fix_tutor_requirement:0 "Automatisierte Ausbildung: Hoftutor vonnöten"
+  setting_tutor_required:0 "Hoftutor vonnöten"
+  setting_tutor_required_desc:0 "Ein Hoftutor muss dem Hofamt zugewiesen sein, um sich der vorübergehenden vormundschafts Verwaltung anzunehmen"
+  setting_no_tutor_required:0 "Kein Huftutor vonnöten"
+  setting_no_tutor_required_desc:0 "Ein Hoftutor wird nicht benötigt"
+
+  edu_fix_start_story_decision:0 "Der Hoftutor wird sich der ausgewiesenen Ausbildungszuweisung annehmen"
+  edu_fix_start_story_decision_tooltip:0 ""
+  edu_fix_start_story_decision_desc:0 "Beginne die Bildungsautomatisierung und wähle aus, welche Mündel Ereignisse auslösen, welche automatisch Vormunde erhalten und wer ignoriert wird."
+  edu_fix_start_story_decision_confirm:0 "Beginnen"
+
+  edu_fix_change_story_variables_decision:0 "Ändern der Ausbildungszuweisung"
+  edu_fix_change_story_variables_decision_tooltip:0 ""
+  edu_fix_change_story_variables_decision_desc:0 "Ändern Sie, welche Mündel Ereignisse auslösen, welche automatisch Vormünder erhalten und wer ignoriert wird."
+  edu_fix_change_story_variables_decision_confirm:0 "Ändern der Einstellungen"
+
+  edu_fix_decision_tt_1:0 "Kinder werden danach gruppiert, in welcher Verbindung sie zur Dynastie stehen:\n Hausoberhaupt und enge Familie\n Großfamilie\n Dynastie\n Nicht verwandte Höflinge"
+  edu_fix_decision_tt_2:0 "Wenn ein Kind sechs Jahre alt wird oder sein Vormund stirbt, passiert Folgendes:\n Hausoberhaupt fragen\n Vormund automatisch zuweisen\n Nichts tun"
+
+
+  edu_fix.0002.t:0 "Auswahl eines Vormundes"
+
+  edu_fix.0002.intro.desc:0 "Euer [SCOPE.sC('ward_court_owner').Custom2('RelationToMeShort', SCOPE.sC('potential_ward'))] [potential_ward.GetShortUIName] hat das Alter erreicht [potential_ward.GetHerHis] unterrichtet zu werden. "
+  edu_fix.0002.dead_guardian.desc:0 "Durch den Tod von [potential_ward.MakeScope.Var('edu_fix_dead_guardian').Char.GetShortUIName],wurde [potential_ward.GetTitledFirstNameNoTooltip]'s Ausbildung unterbrochen. Um die Zukunft von [potential_ward.GetHerHis] sicher zu stellen, sollte ein neuer Vormund zugewiesen werden. "
+  edu_fix.0002.learning.desc:0 "[potential_ward.GetHerHis|U]'s Ausbildungsschwerpunkt konzentriert sich auf das Studium der Gelehrsamkeit, der Theologie und dem Streben nach Wissen.\n\n"
+  edu_fix.0002.diplomacy.desc:0 "[potential_ward.GetHerHis|U]'s Ausbildungsschwerpunkt konzentriert sich auf das Studium der Etikette, der Verständigung und den Umgangsformen im höfischen Leben drehen.\n\n"
+  edu_fix.0002.intrigue.desc:0 "[potential_ward.GetHerHis|U]'s Ausbildungsschwerpunkt konzentriert sich auf das Studium der Geheimhaltung, der Schatten und der sorgfältigen Planung handeln\n\n"
+  edu_fix.0002.martial.desc:0 "[potential_ward.GetHerHis|U]'s Ausbildungsschwerpunkt konzentriert sich auf das Studium der Kriegskunst, des Zweikampfs und des Befehligens von Armeen.\n\n"
+  edu_fix.0002.stewardship.desc:0 "[potential_ward.GetHerHis|U]'s Ausbildungsschwerpunkt konzentriert sich auf das Studium der Verwaltung, des Anleitens Untergebener und der Geldströme.\n\n"
+  edu_fix.0002.nofocus.desc:0 "Es ist noch nicht beschlossen welchen Ausbildungsschwerpunkt [potential_ward.GetSheHe] studieren wird.\n\n"
+  edu_fix.0002.outro.desc:0 "Wen sollte ich auswählen, um [potential_ward.GetTitledFirstNameNoTooltip] für die Welt der Erwachsenen vorzubereiten?"
+
+  edu_fix.0002.a:0 "Ich werde [potential_ward.GetHerHim] selbst unterweisen!"
+  edu_fix.0002.b:0 "[potential_guardian.GetTitledFirstNameNoTooltip] wird sicherstellen, dass [potential_ward.GetSheHe] eine angemessene Erziehung bekommt."
+  edu_fix.0002.c:0 "[potential_guardian2.GetTitledFirstNameNoTooltip] ist ebenfalls eine gute Wahl."
+  edu_fix.0002.d:0 "Ich werde die Zukunft in [potential_guardian_vassal.GetTitledFirstNameNoTooltip]'s Hände geben.'."
+  edu_fix.0002.e:0 "Ich denke später darüber nach."
+  edu_fix.0002.f:0 "[potential_guardian_parent.GetMotherFather] sollte sich um [potential_guardian_parent.GetHerHis] selbst kümmern."
+
+  edu_fix.0003.t:0 "Vormund Zuweisung"
+  edu_fix.0003.intro.desc:0 "Während der Verwaltung seines Reiches hat ein Herrscher bereits genug zu tun. Die Ausbilungszuweisung von Mündeln würde eine unnötige Belastung darstellen.\n"
+
+  edu_fix.0003.settings.t:0 "#T Derzeitige Einstellungen:#!\n"
+
+  edu_fix.0003.automation.desc:0 "Automatisierung: "
+  edu_fix.0003.self_and_close_family.desc:0 "Eigene und nahe Familienmitglieder: "
+  edu_fix.0003.extended_family.desc:0 "Großfamilie: "
+  edu_fix.0003.dynasty.desc:0 "Dynastie Mitglieder: "
+  edu_fix.0003.unrelated.desc:0 "Nicht verwandte Höflinge: "
+
+  edu_fix.0003.enabled.desc:0 "#P Aktiviert#!\n"
+  edu_fix.0003.disabled.desc:0 "#N Deaktiviert#!\n"
+  edu_fix.0003.enabled_inactive.desc:0 "#N Aktiviert, fehlender Hoftutor#!\n"
+
+  edu_fix.0003.event.desc:0 "#P Frag mich#!\n"
+  edu_fix.0003.auto.desc:0 "#Z Automatisch Vormund zuweisen#!\n"
+  edu_fix.0003.nothing.desc:0 "#N Tut nichts#!\n"
+
+  edu_fix.0003.a:0 "Alle Kinder werden automatisch zugewiesen"
+  edu_fix.0003.a.0:0 "Ich kümmere mich um die Zuweisung einiger Kinder!"
+  edu_fix.0003.a.1:0 "Möglicherweise könnte ich etwas Unterstützung benötigen."
+  edu_fix.0003.b:0 "Ändern der Einstellungen für die eigenen und nahen Familienmitglieder"
+  edu_fix.0003.c:0 "Ändern der Einstellungen für die Großfamilie"
+  edu_fix.0003.d:0 "Ändern der Einstellungen der Dynastie Mitglieder"
+  edu_fix.0003.e:0 "Ändern der Einstellungen deiner Höflinge"
+  edu_fix.0003.f:0 "Das sieht gut aus!"
+
+  edu_fix_guardian_skill_excellent:0 "Die Fähigkeit des Vormunds für den zugewiesenen Fokus ist #P Ausgezeichnet#!."
+  edu_fix_guardian_skill_good:0 "Die Fähigkeit des Vormunds für den zugewiesenen Fokus ist #P Gut#!."
+  edu_fix_guardian_skill_average:0 "Die Fähigkeit des Vormunds für den zugewiesenen Fokus ist #Z Durchschnittlich#!."
+  edu_fix_guardian_skill_poor:0 "Die Fähigkeit des Vormunds für den zugewiesenen Fokus ist #N Schlecht#!."
+  edu_fix_guardian_skill_terrible:0 "Die Fähigkeit des Vormunds für den zugewiesenen Fokus ist #N Grauenhaft#!."
+  edu_fix_missing_focus:0 "Dem Kind fehlt der Bildungsfokus.\nEs kann keine Fähigkeit bestimmt werden."

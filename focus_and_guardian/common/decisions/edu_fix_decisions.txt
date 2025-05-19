@@ -1,0 +1,81 @@
+﻿edu_fix_start_story_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+
+	decision_group_type = major
+
+	is_shown = {
+		is_ai = no
+		NOT = {
+			any_owned_story = {
+				story_type = edu_fix_variables_story
+			} 
+		}
+	}
+
+	effect = {
+		create_story = edu_fix_variables_story
+		trigger_event = edu_fix.0006
+		edu_fix_decision_tt_effect = yes
+	}
+
+	ai_potential = {
+		always = no
+	}
+	ai_check_interval = 0
+	ai_will_do = {
+		base = 0
+	}
+}
+
+edu_fix_educate_someone = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+	is_shown = {
+		is_ai = no
+		any_owned_story = {
+			story_type = edu_fix_variables_story
+			var:edu_fix_automation = yes
+		}
+	}
+	effect = {
+		remove_variable = edu_fix_eldest_lock
+		trigger_event = edu_fix.9999
+	}
+
+	ai_potential = {
+		always = no
+	}
+	ai_check_interval = 0
+	ai_will_do = {
+		base = 0
+	}
+}
+
+edu_fix_change_story_variables_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+
+	is_shown = {
+		is_ai = no
+		any_owned_story = {
+			story_type = edu_fix_variables_story
+		} 
+	}
+
+	effect = {
+		trigger_event = edu_fix.0006
+		edu_fix_decision_tt_effect = yes
+	}
+
+	ai_potential = {
+		always = no
+	}
+	ai_check_interval = 0
+	ai_will_do = {
+		base = 0
+	}
+}

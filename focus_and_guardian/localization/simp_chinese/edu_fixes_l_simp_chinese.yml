@@ -1,0 +1,75 @@
+﻿l_simp_chinese:
+
+  rule_edu_fix_tutor_requirement:0 "教育自动化:需要教师"
+  setting_tutor_required:0 "需要教师"
+  setting_tutor_required_desc:0 "自动教育需要一个宫廷教师"
+  setting_no_tutor_required:0 "不需要教师"
+  setting_no_tutor_required_desc:0 "自动教育不需要一个宫廷教师"
+
+  edu_fix_start_story_decision:0 "开启教育自动化"
+  edu_fix_start_story_decision_tooltip:0 ""
+  edu_fix_start_story_decision_desc:0 "初始化教育自动化，并选择触发自动获得监护人事件的儿童。"
+  edu_fix_start_story_decision_confirm:0 "开启"
+
+  edu_fix_change_story_variables_decision:0 "改变教育自动化设置"
+  edu_fix_change_story_variables_decision_tooltip:0 ""
+  edu_fix_change_story_variables_decision_desc:0 "更改能触发自动获得监护人事件的儿童"
+  edu_fix_change_story_variables_decision_confirm:0 "改变设置"
+
+  edu_fix_decision_tt_1:0 "孩子们根据他们与统治者的关系分组：:\n统治者与亲族 \n 关系更远的亲属\n 宗族\n 无关紧要的廷臣"
+  edu_fix_decision_tt_2:0 "当孩子满六岁或监护人去世时，会发生以下情况之一：\n 询问统治者（触发事件）\n 自动指定监护人\n 什么也不做"
+
+
+  edu_fix.0002.t:0 "选择监护人"
+
+  edu_fix.0002.intro.desc:0 "我的[SCOPE.sC('ward_court_owner').Custom2('RelationToMeShort', SCOPE.sC('potential_ward'))] [potential_ward.GetShortUIName]到了[potential_ward.GetHerHis]受教育的年龄了。"
+  edu_fix.0002.dead_guardian.desc:0 "随着[potential_ward.MakeScope.Var('edu_fix_dead_guardian').Char.GetShortUIName]的死去， [potential_ward.GetTitledFirstNameNoTooltip]的教育被中断了。为了[potential_ward.GetHerHis]的未来，应指定一位新的监护人。"
+  edu_fix.0002.learning.desc:0 "[potential_ward.GetHerHis]的教育将专注于学术。\n\n"
+  edu_fix.0002.diplomacy.desc:0 "[potential_ward.GetHerHis|U]的教育将专注于外交。\n\n"
+  edu_fix.0002.intrigue.desc:0 "[potential_ward.GetHerHis|U]的教育将专注于阴谋诡计。\n\n"
+  edu_fix.0002.martial.desc:0 "[potential_ward.GetHerHis]的教育将专注于军事战术。\n\n"
+  edu_fix.0002.stewardship.desc:0 "[potential_ward.GetHerHis]的教育将专注于贸易和商业管理。\n\n"
+  edu_fix.0002.nofocus.desc:0 "[potential_ward.GetSheHe]将要学什么仍未决定。\n\n"
+  edu_fix.0002.outro.desc:0 "我应该选择谁来指引[potential_ward.GetTitledFirstNameNoTooltip]走向成年人的世界？"
+
+  edu_fix.0002.a:0 "我将亲自教育[potential_ward.GetHerHim]！"
+  edu_fix.0002.b:0 "[potential_guardian.GetTitledFirstNameNoTooltip]会确保[potential_ward.GetSheHe]能得到充分养育。"
+  edu_fix.0002.c:0 "[potential_guardian2.GetTitledFirstNameNoTooltip]的技能也很出色。"
+  edu_fix.0002.d:0 "也许我应该信任[potential_guardian_vassal.GetTitledFirstNameNoTooltip]."
+  edu_fix.0002.e:0 "我日后再考虑这个问题。"
+  edu_fix.0002.f:0 "一个[potential_guardian_parent.GetMotherFather]应该养育[potential_guardian_parent.GetHerHis]自己的孩子。"
+
+  edu_fix.0003.t:0 "指定监护人"
+  edu_fix.0003.intro.desc:0 "在管理领地时，统治者已经有相当多的事情要处理了。对孩子们管得太多肯定会增加负担。\n"
+
+  edu_fix.0003.settings.t:0 "#T 现在的设置：#!\n"
+
+  edu_fix.0003.automation.desc:0 "自动化："
+  edu_fix.0003.self_and_close_family.desc:0 "统治者的近亲："
+  edu_fix.0003.extended_family.desc:0 "统治者的远亲："
+  edu_fix.0003.dynasty.desc:0 "统治者的宗族："
+  edu_fix.0003.unrelated.desc:0 "无关紧要的廷臣："
+
+  edu_fix.0003.enabled.desc:0 "#P 允许#!\n"
+  edu_fix.0003.disabled.desc:0 "#N 禁止#!\n"
+  edu_fix.0003.enabled_inactive.desc:0 "#N 在没有宫廷教师的情况下允许#!\n"
+
+  edu_fix.0003.event.desc:0 "#P 询问统治者#!\n"
+  edu_fix.0003.auto.desc:0 "#Z 自动指定监护人#!\n"
+  edu_fix.0003.nothing.desc:0 "#N 什么也不做#!\n"
+
+  edu_fix.0003.a:0 "开启全自动"
+  edu_fix.0003.a.0:0 "我能照顾一些孩子！"
+  edu_fix.0003.a.1:0 "也许我需要一些帮助。"
+  edu_fix.0003.b:0 "改变近亲设置"
+  edu_fix.0003.c:0 "改变远亲设置"
+  edu_fix.0003.d:0 "改变宗族设置"
+  edu_fix.0003.e:0 "改变廷臣设置"
+  edu_fix.0003.f:0 "设定完成"
+
+  edu_fix_guardian_skill_excellent:0 "对于当前学习重心，监护人的技能是 #P 优秀#!."
+  edu_fix_guardian_skill_good:0 "对于当前学习重心，监护人的技能是 #P 良好#!."
+  edu_fix_guardian_skill_average:0 "对于当前学习重心，监护人的技能是 #Z 平庸#!."
+  edu_fix_guardian_skill_poor:0 "对于当前学习重心，监护人的技能是 #N 较差#!."
+  edu_fix_guardian_skill_terrible:0 "对于当前学习重心，监护人的技能是 #N 糟糕#!."
+  edu_fix_missing_focus:0 "儿童没有教育重心。\n无法衡量监护人技能。"

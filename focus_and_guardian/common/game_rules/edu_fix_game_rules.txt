@@ -1,0 +1,8 @@
+﻿edu_fix_tutor_requirement = {
+	categories = { tweaks }
+
+	default = no_tutor_required
+
+	tutor_required = {}
+	no_tutor_required = {}
+}
