@@ -12,7 +12,7 @@ Automates focus and guardian choice, for all your underage courtiers. The mod is
 
 ## Features
 
-1. A chain of events that chooses focus and then guardian is evoced monthly or by your decision.
+1. A chain of events that chooses focus and then guardian is evoked monthly or by your decision.
 
 2. Education focus choice is automatic; guardian selection if either manual or automatic, like in [buddykenner's mod](https://catalogue.smods.ru/archives/127942).
 
@@ -58,7 +58,7 @@ Focus is chosen automatically. No options supported. If you want to know the cho
 
 ## Bugs
 
-I want to start education at age nearly six, for instance when child is 5 years 10 month. Unfortunately there is no easy way to select child of such age. Condition 'age >= 5.8' evaluates to 'age is 5 or more'. I do not know how to properly evaluate age check without more variables and scripts on all 5-year-old courtiers; I do not want to add that many variables and scripts.
+I want to start education at age nearly six, for instance when child is 5 years 10 month. Unfortunately there is no easy way to select child of such age. Condition 'age >= 5.8' evaluates to 'age is 5 or more'. I do not know how to properly implement age check without more variables and scripts on all 5-year-old courtiers; I do not want to add that many variables and scripts.
 
 Hopefully things will be better with newer version of the game. Will return to this matter when porting the mod to the newer version, which will happen when Elder Kings supports it.
 
