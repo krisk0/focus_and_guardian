@@ -129,9 +129,9 @@ ek_monthly_global_pulse = {
 		   limit = {
 				any_courtier = {
 					is_adult = no
-					age >= 5.8                    # child of age nearly six or more
+					age >= 5.8       # child of age nearly six or more
 					num_of_relation_guardian = 0
-                    NOT = { exists = var:ward_travelling_to_guardian }
+					NOT = { exists = var:ward_travelling_to_guardian }
 				}
 			}
 			# Set specializaion and then guardian

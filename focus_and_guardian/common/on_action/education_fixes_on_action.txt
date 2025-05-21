@@ -137,8 +137,8 @@ edu_fix_guardian_death_on_action = {
 				name = edu_fix_dead_guardian
 				value = root
 			}
-		set_variable = edu_fix_allowed
-		trigger_event = {
+            set_variable = edu_fix_allowed
+            trigger_event = {
 				id = edu_fix.0001
 			}
 		}
@@ -152,10 +152,11 @@ edu_fix_guardian_removed_on_action = {
 				name = edu_fix_removed_guardian
 				value = root
 			}
+            # TODO: remove edu_fix_removed_guardian on player death?
 			set_variable = edu_fix_allowed
 			trigger_event = {
 				id = edu_fix.0001
-						# maybe player will choose guardian himself?
+				# maybe player will choose guardian himself?
 				days = 1
 			}
 		}
