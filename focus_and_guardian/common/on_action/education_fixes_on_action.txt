@@ -1,22 +1,4 @@
-﻿#on_birthday = {
-#   on_actions = {
-#		delay = { days = 7 }
-#		edu_fix_on_action
-#		edu_fix_university_on_action
-#	}
-#}
-#
-#edu_fix_on_action = {
-#	trigger = {
-#		age = 6
-#	}
-#
-#	events = {
-#		edu_fix.0001
-#	}
-#}
-
-on_birthday = {
+﻿on_birthday = {
    on_actions = {
 		delay = { days = 7 }
 		edu_fix_vars_on_action
@@ -58,7 +40,7 @@ edu_fix_university_on_action = {
 			any_owned_story = {
 				story_type = edu_fix_variables_story
 				var:edu_fix_university_automation = yes
-			} 
+			}
 			trigger_if = {
 				limit = { has_game_rule = tutor_required }
 				employs_court_position = court_tutor_court_position
@@ -128,7 +110,7 @@ edu_fix_university_on_action = {
 				}
 				trigger_event = edu_fix.0005
 			}
-			
+
 		}
 	}
 }
@@ -170,7 +152,7 @@ edu_fix_guardian_removed_on_action = {
 				name = edu_fix_removed_guardian
 				value = root
 			}
-            set_variable = edu_fix_allowed
+			set_variable = edu_fix_allowed
 			trigger_event = {
 				id = edu_fix.0001
 						# maybe player will choose guardian himself?

@@ -63,7 +63,7 @@ If you know how to find the eldest 5-year-old in script without hurting performa
 
 I chose to modify the original [EA mod](https://catalogue.smods.ru/archives/127942) for the following reasons:
 
-* EA mod only runs events once per year, not once per month; no way to force thru decision.
+* EA mod only runs events once per year, not once per month; no way to force through decision.
 * EA mod does not automate focus choice.
 * EA dialogs might spam: new dialog for next child might emerge, before I choose guardian for previous child.
 
