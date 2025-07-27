@@ -38,7 +38,7 @@ Suppose you want to convert most of your childen to your faith. Suppose further 
 2. You release from prison the 12-year old and force her to be your courtier.
 3. You are busy managing your troops and forgot to choose "Are all my children educated?" decision. Luckily the focus-guardian event chain evokes automatically at the start of the month.
 4. The event is for eldest child who happens to be that 12-years old. You get a dialog showing two possible guardians.
-5. If one of the two guardians if of the right faith, select them; immediately after the focus-education event chain runs for another child.
+5. If one of the two guardians is of the right faith, select them; immediately after the focus-education event chain runs for another child.
 6. If neigther guardian is of the right faith, you take last option "I will think on this later"; choose guardian of your faith manually, and enable faith conversion; choose "Are all my children educated?" decision, to enable focus-guardian loop.
 
 ## Guardian choice
