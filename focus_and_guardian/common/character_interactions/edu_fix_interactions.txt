@@ -5,7 +5,7 @@
 	desc = send_to_university_interaction_desc
 
 	auto_accept = yes
-	
+
 	is_shown = {
 		scope:actor = {
 			is_ruler = yes
@@ -175,7 +175,7 @@
 # 						exists = employer
 # 						NOT = { employer = scope:actor }
 # 					}
-					
+
 # 					employer = {
 # 						save_scope_as = actor
 # 					}
@@ -198,12 +198,12 @@
 # 						exists = employer
 # 						NOT = { employer = scope:recipient }
 # 					}
-					
+
 # 					employer = {
 # 						save_scope_as = recipient
 # 					}
 # 				}
-# 			}		
+# 			}
 # 		}
 # 	}
 
@@ -322,9 +322,9 @@
 # 			}
 # 		}
 # 	}
-	
+
 # 	prompt = {
-# 		first_valid = {	
+# 		first_valid = {
 # 			triggered_desc = {
 # 				trigger = {
 # 					NOT = { exists = scope:secondary_actor }
@@ -375,115 +375,115 @@
 # 			custom_description = {
 # 				text = influence_child_personality_interaction_all_same_traits
 # 				switch = {
-# 					trigger = yes 
+# 					trigger = yes
 # 					scope:lustful = {
 # 						scope:secondary_recipient = { NOT = { has_trait = lustful } }
-# 					} 
+# 					}
 # 					scope:chaste = {
 # 						scope:secondary_recipient = { NOT = { has_trait = chaste } }
-# 					} 
+# 					}
 # 					scope:gluttonous = {
 # 						scope:secondary_recipient = { NOT = { has_trait = gluttonous } }
-# 					} 
+# 					}
 # 					scope:temperate = {
 # 						scope:secondary_recipient = { NOT = { has_trait = temperate } }
-# 					} 
+# 					}
 # 					scope:greedy = {
 # 						scope:secondary_recipient = { NOT = { has_trait = greedy } }
-# 					} 
+# 					}
 # 					scope:generous = {
 # 						scope:secondary_recipient = { NOT = { has_trait = generous } }
-# 					} 
+# 					}
 # 					scope:lazy = {
 # 						scope:secondary_recipient = { NOT = { has_trait = lazy } }
-# 					} 
+# 					}
 # 					scope:diligent = {
 # 						scope:secondary_recipient = { NOT = { has_trait = diligent } }
-# 					} 
+# 					}
 # 					scope:wrathful = {
 # 						scope:secondary_recipient = { NOT = { has_trait = wrathful } }
-# 					} 
+# 					}
 # 					scope:calm = {
 # 						scope:secondary_recipient = { NOT = { has_trait = calm } }
-# 					} 
+# 					}
 # 					scope:patient = {
 # 						scope:secondary_recipient = { NOT = { has_trait = patient } }
-# 					} 
+# 					}
 # 					scope:impatient = {
 # 						scope:secondary_recipient = { NOT = { has_trait = impatient } }
-# 					} 
+# 					}
 # 					scope:arrogant = {
 # 						scope:secondary_recipient = { NOT = { has_trait = arrogant } }
-# 					} 
+# 					}
 # 					scope:humble = {
 # 						scope:secondary_recipient = { NOT = { has_trait = humble } }
-# 					} 
+# 					}
 # 					scope:deceitful = {
 # 						scope:secondary_recipient = { NOT = { has_trait = deceitful } }
-# 					} 
+# 					}
 # 					scope:honest = {
 # 						scope:secondary_recipient = { NOT = { has_trait = honest } }
-# 					} 
+# 					}
 # 					scope:craven = {
 # 						scope:secondary_recipient = { NOT = { has_trait = craven } }
-# 					} 
+# 					}
 # 					scope:brave = {
 # 						scope:secondary_recipient = { NOT = { has_trait = brave } }
-# 					} 
+# 					}
 # 					scope:shy = {
 # 						scope:secondary_recipient = { NOT = { has_trait = shy } }
-# 					} 
+# 					}
 # 					scope:gregarious = {
 # 						scope:secondary_recipient = { NOT = { has_trait = gregarious } }
-# 					} 
+# 					}
 # 					scope:ambitious = {
 # 						scope:secondary_recipient = { NOT = { has_trait = ambitious } }
-# 					} 
+# 					}
 # 					scope:content = {
 # 						scope:secondary_recipient = { NOT = { has_trait = content } }
-# 					} 
+# 					}
 # 					scope:arbitrary = {
 # 						scope:secondary_recipient = { NOT = { has_trait = arbitrary } }
-# 					} 
+# 					}
 # 					scope:just = {
 # 						scope:secondary_recipient = { NOT = { has_trait = just } }
-# 					} 
+# 					}
 # 					scope:cynical = {
 # 						scope:secondary_recipient = { NOT = { has_trait = cynical } }
-# 					} 
+# 					}
 # 					scope:zealous = {
 # 						scope:secondary_recipient = { NOT = { has_trait = zealous } }
-# 					} 
+# 					}
 # 					scope:paranoid = {
 # 						scope:secondary_recipient = { NOT = { has_trait = paranoid } }
-# 					} 
+# 					}
 # 					scope:trusting = {
 # 						scope:secondary_recipient = { NOT = { has_trait = trusting } }
-# 					} 
+# 					}
 # 					scope:compassionate = {
 # 						scope:secondary_recipient = { NOT = { has_trait = compassionate } }
-# 					} 
+# 					}
 # 					scope:callous = {
 # 						scope:secondary_recipient = { NOT = { has_trait = callous } }
-# 					} 
+# 					}
 # 					scope:sadistic = {
 # 						scope:secondary_recipient = { NOT = { has_trait = sadistic } }
-# 					} 
+# 					}
 # 					scope:stubborn = {
 # 						scope:secondary_recipient = { NOT = { has_trait = stubborn } }
-# 					} 
+# 					}
 # 					scope:fickle = {
 # 						scope:secondary_recipient = { NOT = { has_trait = fickle } }
-# 					} 
+# 					}
 # 					scope:eccentric = {
 # 						scope:secondary_recipient = { NOT = { has_trait = eccentric } }
-# 					} 
+# 					}
 # 					scope:vengeful = {
 # 						scope:secondary_recipient = { NOT = { has_trait = vengeful } }
-# 					} 
+# 					}
 # 					scope:forgiving = {
 # 						scope:secondary_recipient = { NOT = { has_trait = forgiving } }
-# 					} 
+# 					}
 # 				}
 # 			}
 # 		}
@@ -496,112 +496,112 @@
 
 # 	on_send = {
 # 		switch = {#save which trait was chosen as scope:target_trait
-# 			trigger = yes 
+# 			trigger = yes
 # 			scope:lustful = {
 # 				trait:lustful = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:chaste = {
 # 				trait:chaste = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:gluttonous = {
 # 				trait:gluttonous = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:temperate = {
 # 				trait:temperate = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:greedy = {
 # 				trait:greedy = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:generous = {
 # 				trait:generous = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:lazy = {
 # 				trait:lazy = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:diligent = {
 # 				trait:diligent = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:wrathful = {
 # 				trait:wrathful = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:calm = {
 # 				trait:calm = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:patient = {
 # 				trait:patient = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:impatient = {
 # 				trait:impatient = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:arrogant = {
 # 				trait:arrogant = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:humble = {
 # 				trait:humble = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:deceitful = {
 # 				trait:deceitful = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:honest = {
 # 				trait:honest = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:craven = {
 # 				trait:craven = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:brave = {
 # 				trait:brave = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:shy = {
 # 				trait:shy = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:gregarious = {
 # 				trait:gregarious = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:ambitious = {
 # 				trait:ambitious = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:content = {
 # 				trait:content = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:arbitrary = {
 # 				trait:arbitrary = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:just = {
 # 				trait:just = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:cynical = {
 # 				trait:cynical = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:zealous = {
 # 				trait:zealous = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:paranoid = {
 # 				trait:paranoid = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:trusting = {
 # 				trait:trusting = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:compassionate = {
 # 				trait:compassionate = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:callous = {
 # 				trait:callous = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:sadistic = {
 # 				trait:sadistic = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:stubborn = {
 # 				trait:stubborn = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:fickle = {
 # 				trait:fickle = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:eccentric = {
 # 				trait:eccentric = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:vengeful = {
 # 				trait:vengeful = { save_scope_as = target_trait }
-# 			} 
+# 			}
 # 			scope:forgiving = {
 # 				trait:forgiving = { save_scope_as = target_trait }
 # 			}
@@ -633,115 +633,115 @@
 # 		scope:secondary_recipient = {
 # 			show_as_tooltip = {
 # 				switch = {#save which trait was chosen as scope:target_trait
-# 					trigger = yes 
+# 					trigger = yes
 # 					scope:lustful = {
 # 						trait:lustful = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:chaste = {
 # 						trait:chaste = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:gluttonous = {
 # 						trait:gluttonous = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:temperate = {
 # 						trait:temperate = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:greedy = {
 # 						trait:greedy = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:generous = {
 # 						trait:generous = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:lazy = {
 # 						trait:lazy = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:diligent = {
 # 						trait:diligent = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:wrathful = {
 # 						trait:wrathful = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:calm = {
 # 						trait:calm = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:patient = {
 # 						trait:patient = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:impatient = {
 # 						trait:impatient = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:arrogant = {
 # 						trait:arrogant = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:humble = {
 # 						trait:humble = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:deceitful = {
 # 						trait:deceitful = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:honest = {
 # 						trait:honest = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:craven = {
 # 						trait:craven = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:brave = {
 # 						trait:brave = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:shy = {
 # 						trait:shy = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:gregarious = {
 # 						trait:gregarious = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:ambitious = {
 # 						trait:ambitious = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:content = {
 # 						trait:content = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:arbitrary = {
 # 						trait:arbitrary = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:just = {
 # 						trait:just = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:cynical = {
 # 						trait:cynical = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:zealous = {
 # 						trait:zealous = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:paranoid = {
 # 						trait:paranoid = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:trusting = {
 # 						trait:trusting = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:compassionate = {
 # 						trait:compassionate = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:callous = {
 # 						trait:callous = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:sadistic = {
 # 						trait:sadistic = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:stubborn = {
 # 						trait:stubborn = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:fickle = {
 # 						trait:fickle = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:eccentric = {
 # 						trait:eccentric = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:vengeful = {
 # 						trait:vengeful = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 					scope:forgiving = {
 # 						trait:forgiving = { save_scope_as = target_trait }
-# 					} 
+# 					}
 # 				}
 # 				if = {
 # 					limit = { exists = scope:target_trait }
@@ -755,7 +755,7 @@
 # 			}
 # 		}
 # 	}
-		
+
 # 	on_decline = {
 # 		scope:actor = {
 # 			# Trait you're trying to make your ward gained is saved as scope:target_trait
@@ -782,7 +782,7 @@
 # 	}
 
 # 	auto_accept = no
-	
+
 # 	ai_accept = {
 # 		base = 0 # Try to make it 0 for most interactions
 # 		opinion_modifier = { # Opinion Factor
@@ -801,7 +801,7 @@
 # 		}
 
 # 		modifier = { #more likely if you already have something in common
-# 			add = { 
+# 			add = {
 # 				value = 5
 # 				if = {
 # 					limit = {
@@ -823,7 +823,7 @@
 # 				}
 # 			}
 # 			number_of_personality_traits_in_common = {
-# 				target = scope:secondary_recipient 
+# 				target = scope:secondary_recipient
 # 				value >= 1
 # 			}
 # 			desc = we_are_alike_tt
@@ -836,7 +836,7 @@
 # 					limit = {
 # 						scope:secondary_recipient = {
 # 							number_of_opposing_personality_traits = {
-# 								target = scope:secondary_actor 
+# 								target = scope:secondary_actor
 # 								value = 2
 # 							}
 # 						}
@@ -847,7 +847,7 @@
 # 					limit = {
 # 						scope:secondary_recipient = {
 # 							number_of_opposing_personality_traits = {
-# 								target = scope:secondary_actor 
+# 								target = scope:secondary_actor
 # 								value = 3
 # 							}
 # 						}
@@ -857,7 +857,7 @@
 # 			}
 # 			scope:secondary_recipient = {
 # 				number_of_opposing_personality_traits = {
-# 					target = scope:secondary_actor 
+# 					target = scope:secondary_actor
 # 					value >= 1
 # 				}
 # 			}
@@ -1838,7 +1838,7 @@
 # 			desc = has_three_traits_already
 # 		}
 # 	}
-	
+
 # 	send_option = {
 # 		is_shown = {
 # 			scope:secondary_actor = { has_trait = lustful }
@@ -1877,7 +1877,7 @@
 # 					has_sexuality = asexual
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = chaste
 # 		localization = trait_chaste
 # 	}
@@ -1896,7 +1896,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = gluttonous
 # 		localization = trait_gluttonous
 # 	}
@@ -1915,7 +1915,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = temperate
 # 		localization = trait_temperate
 # 	}
@@ -1934,7 +1934,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = greedy
 # 		localization = trait_greedy
 # 	}
@@ -1953,7 +1953,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = generous
 # 		localization = trait_generous
 # 	}
@@ -1972,7 +1972,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = lazy
 # 		localization = trait_lazy
 # 	}
@@ -1991,7 +1991,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = diligent
 # 		localization = trait_diligent
 # 	}
@@ -2010,7 +2010,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = wrathful
 # 		localization = trait_wrathful
 # 	}
@@ -2029,7 +2029,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = calm
 # 		localization = trait_calm
 # 	}
@@ -2048,7 +2048,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = patient
 # 		localization = trait_patient
 # 	}
@@ -2067,7 +2067,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = impatient
 # 		localization = trait_impatient
 # 	}
@@ -2086,7 +2086,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = arrogant
 # 		localization = trait_arrogant
 # 	}
@@ -2105,7 +2105,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = humble
 # 		localization = trait_humble
 # 	}
@@ -2124,7 +2124,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = deceitful
 # 		localization = trait_deceitful
 # 	}
@@ -2143,7 +2143,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = honest
 # 		localization = trait_honest
 # 	}
@@ -2162,7 +2162,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = craven
 # 		localization = trait_craven
 # 	}
@@ -2181,7 +2181,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = brave
 # 		localization = trait_brave
 # 	}
@@ -2200,7 +2200,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = shy
 # 		localization = trait_shy
 # 	}
@@ -2219,7 +2219,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = gregarious
 # 		localization = trait_gregarious
 # 	}
@@ -2238,7 +2238,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = ambitious
 # 		localization = trait_ambitious
 # 	}
@@ -2257,7 +2257,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = content
 # 		localization = trait_content
 # 	}
@@ -2276,7 +2276,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = arbitrary
 # 		localization = trait_arbitrary
 # 	}
@@ -2295,7 +2295,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = just
 # 		localization = trait_just
 # 	}
@@ -2314,7 +2314,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = cynical
 # 		localization = trait_cynical
 # 	}
@@ -2333,7 +2333,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = zealous
 # 		localization = trait_zealous
 # 	}
@@ -2352,7 +2352,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = paranoid
 # 		localization = trait_paranoid
 # 	}
@@ -2371,7 +2371,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = trusting
 # 		localization = trait_trusting
 # 	}
@@ -2390,7 +2390,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = compassionate
 # 		localization = trait_compassionate
 # 	}
@@ -2409,7 +2409,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = callous
 # 		localization = trait_callous
 # 	}
@@ -2428,7 +2428,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = sadistic
 # 		localization = trait_sadistic
 # 	}
@@ -2447,7 +2447,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = stubborn
 # 		localization = trait_stubborn
 # 	}
@@ -2466,7 +2466,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = fickle
 # 		localization = trait_fickle
 # 	}
@@ -2485,7 +2485,7 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = eccentric
 # 		localization = trait_eccentric
 # 	}
@@ -2523,13 +2523,13 @@
 # 					}
 # 				}
 # 			}
-# 		} 
+# 		}
 # 		flag = forgiving
 # 		localization = trait_forgiving
 # 	}
 
 # 	send_options_exclusive = yes
-	
+
 # 	ai_potential = {
 # 		any_relation = {
 # 			type = ward
@@ -2540,7 +2540,7 @@
 # 	ai_targets = {
 # 		ai_recipients = courtiers
 # 	}
-	
+
 # 	ai_will_do = {
 # 		base = -100
 # 		modifier = { # If the recipient is a player, do not bother sending
@@ -2619,115 +2619,115 @@ influence_child_personality_interaction = {
 			custom_description = {
 				text = influence_child_personality_interaction_all_same_traits
 				switch = {
-					trigger = yes 
+					trigger = yes
 					scope:lustful = {
 						scope:recipient = { NOT = { has_trait = lustful } }
-					} 
+					}
 					scope:chaste = {
 						scope:recipient = { NOT = { has_trait = chaste } }
-					} 
+					}
 					scope:gluttonous = {
 						scope:recipient = { NOT = { has_trait = gluttonous } }
-					} 
+					}
 					scope:temperate = {
 						scope:recipient = { NOT = { has_trait = temperate } }
-					} 
+					}
 					scope:greedy = {
 						scope:recipient = { NOT = { has_trait = greedy } }
-					} 
+					}
 					scope:generous = {
 						scope:recipient = { NOT = { has_trait = generous } }
-					} 
+					}
 					scope:lazy = {
 						scope:recipient = { NOT = { has_trait = lazy } }
-					} 
+					}
 					scope:diligent = {
 						scope:recipient = { NOT = { has_trait = diligent } }
-					} 
+					}
 					scope:wrathful = {
 						scope:recipient = { NOT = { has_trait = wrathful } }
-					} 
+					}
 					scope:calm = {
 						scope:recipient = { NOT = { has_trait = calm } }
-					} 
+					}
 					scope:patient = {
 						scope:recipient = { NOT = { has_trait = patient } }
-					} 
+					}
 					scope:impatient = {
 						scope:recipient = { NOT = { has_trait = impatient } }
-					} 
+					}
 					scope:arrogant = {
 						scope:recipient = { NOT = { has_trait = arrogant } }
-					} 
+					}
 					scope:humble = {
 						scope:recipient = { NOT = { has_trait = humble } }
-					} 
+					}
 					scope:deceitful = {
 						scope:recipient = { NOT = { has_trait = deceitful } }
-					} 
+					}
 					scope:honest = {
 						scope:recipient = { NOT = { has_trait = honest } }
-					} 
+					}
 					scope:craven = {
 						scope:recipient = { NOT = { has_trait = craven } }
-					} 
+					}
 					scope:brave = {
 						scope:recipient = { NOT = { has_trait = brave } }
-					} 
+					}
 					scope:shy = {
 						scope:recipient = { NOT = { has_trait = shy } }
-					} 
+					}
 					scope:gregarious = {
 						scope:recipient = { NOT = { has_trait = gregarious } }
-					} 
+					}
 					scope:ambitious = {
 						scope:recipient = { NOT = { has_trait = ambitious } }
-					} 
+					}
 					scope:content = {
 						scope:recipient = { NOT = { has_trait = content } }
-					} 
+					}
 					scope:arbitrary = {
 						scope:recipient = { NOT = { has_trait = arbitrary } }
-					} 
+					}
 					scope:just = {
 						scope:recipient = { NOT = { has_trait = just } }
-					} 
+					}
 					scope:cynical = {
 						scope:recipient = { NOT = { has_trait = cynical } }
-					} 
+					}
 					scope:zealous = {
 						scope:recipient = { NOT = { has_trait = zealous } }
-					} 
+					}
 					scope:paranoid = {
 						scope:recipient = { NOT = { has_trait = paranoid } }
-					} 
+					}
 					scope:trusting = {
 						scope:recipient = { NOT = { has_trait = trusting } }
-					} 
+					}
 					scope:compassionate = {
 						scope:recipient = { NOT = { has_trait = compassionate } }
-					} 
+					}
 					scope:callous = {
 						scope:recipient = { NOT = { has_trait = callous } }
-					} 
+					}
 					scope:sadistic = {
 						scope:recipient = { NOT = { has_trait = sadistic } }
-					} 
+					}
 					scope:stubborn = {
 						scope:recipient = { NOT = { has_trait = stubborn } }
-					} 
+					}
 					scope:fickle = {
 						scope:recipient = { NOT = { has_trait = fickle } }
-					} 
+					}
 					scope:eccentric = {
 						scope:recipient = { NOT = { has_trait = eccentric } }
-					} 
+					}
 					scope:vengeful = {
 						scope:recipient = { NOT = { has_trait = vengeful } }
-					} 
+					}
 					scope:forgiving = {
 						scope:recipient = { NOT = { has_trait = forgiving } }
-					} 
+					}
 				}
 			}
 		}
@@ -2737,12 +2737,12 @@ influence_child_personality_interaction = {
 			number_of_personality_traits >= 1 #just in case you have to have at least some personality
 		}
 	}
-	
+
 	cooldown_against_recipient = { years = 3 }
 
 	can_send = {
 	}
-	#each option is shown if the actor has the corresponding trait and valid if recipient don't have it yet or don't have an opposite trait 
+	#each option is shown if the actor has the corresponding trait and valid if recipient don't have it yet or don't have an opposite trait
 	send_option = {
 		is_shown = {
 			scope:actor = { has_trait = lustful }
@@ -2781,7 +2781,7 @@ influence_child_personality_interaction = {
 					has_sexuality = asexual
 				}
 			}
-		} 
+		}
 		flag = chaste
 		localization = trait_chaste
 	}
@@ -2800,7 +2800,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = gluttonous
 		localization = trait_gluttonous
 	}
@@ -2819,7 +2819,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = temperate
 		localization = trait_temperate
 	}
@@ -2838,7 +2838,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = greedy
 		localization = trait_greedy
 	}
@@ -2857,7 +2857,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = generous
 		localization = trait_generous
 	}
@@ -2876,7 +2876,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = lazy
 		localization = trait_lazy
 	}
@@ -2895,7 +2895,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = diligent
 		localization = trait_diligent
 	}
@@ -2914,7 +2914,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = wrathful
 		localization = trait_wrathful
 	}
@@ -2933,7 +2933,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = calm
 		localization = trait_calm
 	}
@@ -2952,7 +2952,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = patient
 		localization = trait_patient
 	}
@@ -2971,7 +2971,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = impatient
 		localization = trait_impatient
 	}
@@ -2990,7 +2990,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = arrogant
 		localization = trait_arrogant
 	}
@@ -3009,7 +3009,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = humble
 		localization = trait_humble
 	}
@@ -3028,7 +3028,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = deceitful
 		localization = trait_deceitful
 	}
@@ -3047,7 +3047,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = honest
 		localization = trait_honest
 	}
@@ -3066,7 +3066,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = craven
 		localization = trait_craven
 	}
@@ -3085,7 +3085,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = brave
 		localization = trait_brave
 	}
@@ -3104,7 +3104,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = shy
 		localization = trait_shy
 	}
@@ -3123,7 +3123,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = gregarious
 		localization = trait_gregarious
 	}
@@ -3142,7 +3142,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = ambitious
 		localization = trait_ambitious
 	}
@@ -3161,7 +3161,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = content
 		localization = trait_content
 	}
@@ -3180,7 +3180,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = arbitrary
 		localization = trait_arbitrary
 	}
@@ -3199,7 +3199,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = just
 		localization = trait_just
 	}
@@ -3218,7 +3218,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = cynical
 		localization = trait_cynical
 	}
@@ -3237,7 +3237,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = zealous
 		localization = trait_zealous
 	}
@@ -3256,7 +3256,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = paranoid
 		localization = trait_paranoid
 	}
@@ -3275,7 +3275,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = trusting
 		localization = trait_trusting
 	}
@@ -3294,7 +3294,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = compassionate
 		localization = trait_compassionate
 	}
@@ -3313,7 +3313,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = callous
 		localization = trait_callous
 	}
@@ -3332,7 +3332,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = sadistic
 		localization = trait_sadistic
 	}
@@ -3351,7 +3351,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = stubborn
 		localization = trait_stubborn
 	}
@@ -3370,7 +3370,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = fickle
 		localization = trait_fickle
 	}
@@ -3389,7 +3389,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = eccentric
 		localization = trait_eccentric
 	}
@@ -3427,7 +3427,7 @@ influence_child_personality_interaction = {
 					}
 				}
 			}
-		} 
+		}
 		flag = forgiving
 		localization = trait_forgiving
 	}
@@ -3436,112 +3436,112 @@ influence_child_personality_interaction = {
 
 	on_send = {
 		switch = {#save which trait was chosen as scope:target_trait
-			trigger = yes 
+			trigger = yes
 			scope:lustful = {
 				trait:lustful = { save_scope_as = target_trait }
-			} 
+			}
 			scope:chaste = {
 				trait:chaste = { save_scope_as = target_trait }
-			} 
+			}
 			scope:gluttonous = {
 				trait:gluttonous = { save_scope_as = target_trait }
-			} 
+			}
 			scope:temperate = {
 				trait:temperate = { save_scope_as = target_trait }
-			} 
+			}
 			scope:greedy = {
 				trait:greedy = { save_scope_as = target_trait }
-			} 
+			}
 			scope:generous = {
 				trait:generous = { save_scope_as = target_trait }
-			} 
+			}
 			scope:lazy = {
 				trait:lazy = { save_scope_as = target_trait }
-			} 
+			}
 			scope:diligent = {
 				trait:diligent = { save_scope_as = target_trait }
-			} 
+			}
 			scope:wrathful = {
 				trait:wrathful = { save_scope_as = target_trait }
-			} 
+			}
 			scope:calm = {
 				trait:calm = { save_scope_as = target_trait }
-			} 
+			}
 			scope:patient = {
 				trait:patient = { save_scope_as = target_trait }
-			} 
+			}
 			scope:impatient = {
 				trait:impatient = { save_scope_as = target_trait }
-			} 
+			}
 			scope:arrogant = {
 				trait:arrogant = { save_scope_as = target_trait }
-			} 
+			}
 			scope:humble = {
 				trait:humble = { save_scope_as = target_trait }
-			} 
+			}
 			scope:deceitful = {
 				trait:deceitful = { save_scope_as = target_trait }
-			} 
+			}
 			scope:honest = {
 				trait:honest = { save_scope_as = target_trait }
-			} 
+			}
 			scope:craven = {
 				trait:craven = { save_scope_as = target_trait }
-			} 
+			}
 			scope:brave = {
 				trait:brave = { save_scope_as = target_trait }
-			} 
+			}
 			scope:shy = {
 				trait:shy = { save_scope_as = target_trait }
-			} 
+			}
 			scope:gregarious = {
 				trait:gregarious = { save_scope_as = target_trait }
-			} 
+			}
 			scope:ambitious = {
 				trait:ambitious = { save_scope_as = target_trait }
-			} 
+			}
 			scope:content = {
 				trait:content = { save_scope_as = target_trait }
-			} 
+			}
 			scope:arbitrary = {
 				trait:arbitrary = { save_scope_as = target_trait }
-			} 
+			}
 			scope:just = {
 				trait:just = { save_scope_as = target_trait }
-			} 
+			}
 			scope:cynical = {
 				trait:cynical = { save_scope_as = target_trait }
-			} 
+			}
 			scope:zealous = {
 				trait:zealous = { save_scope_as = target_trait }
-			} 
+			}
 			scope:paranoid = {
 				trait:paranoid = { save_scope_as = target_trait }
-			} 
+			}
 			scope:trusting = {
 				trait:trusting = { save_scope_as = target_trait }
-			} 
+			}
 			scope:compassionate = {
 				trait:compassionate = { save_scope_as = target_trait }
-			} 
+			}
 			scope:callous = {
 				trait:callous = { save_scope_as = target_trait }
-			} 
+			}
 			scope:sadistic = {
 				trait:sadistic = { save_scope_as = target_trait }
-			} 
+			}
 			scope:stubborn = {
 				trait:stubborn = { save_scope_as = target_trait }
-			} 
+			}
 			scope:fickle = {
 				trait:fickle = { save_scope_as = target_trait }
-			} 
+			}
 			scope:eccentric = {
 				trait:eccentric = { save_scope_as = target_trait }
-			} 
+			}
 			scope:vengeful = {
 				trait:vengeful = { save_scope_as = target_trait }
-			} 
+			}
 			scope:forgiving = {
 				trait:forgiving = { save_scope_as = target_trait }
 			}
@@ -3573,115 +3573,115 @@ influence_child_personality_interaction = {
 		scope:recipient = {
 			show_as_tooltip = {
 				switch = {#save which trait was chosen as scope:target_trait
-					trigger = yes 
+					trigger = yes
 					scope:lustful = {
 						trait:lustful = { save_scope_as = target_trait }
-					} 
+					}
 					scope:chaste = {
 						trait:chaste = { save_scope_as = target_trait }
-					} 
+					}
 					scope:gluttonous = {
 						trait:gluttonous = { save_scope_as = target_trait }
-					} 
+					}
 					scope:temperate = {
 						trait:temperate = { save_scope_as = target_trait }
-					} 
+					}
 					scope:greedy = {
 						trait:greedy = { save_scope_as = target_trait }
-					} 
+					}
 					scope:generous = {
 						trait:generous = { save_scope_as = target_trait }
-					} 
+					}
 					scope:lazy = {
 						trait:lazy = { save_scope_as = target_trait }
-					} 
+					}
 					scope:diligent = {
 						trait:diligent = { save_scope_as = target_trait }
-					} 
+					}
 					scope:wrathful = {
 						trait:wrathful = { save_scope_as = target_trait }
-					} 
+					}
 					scope:calm = {
 						trait:calm = { save_scope_as = target_trait }
-					} 
+					}
 					scope:patient = {
 						trait:patient = { save_scope_as = target_trait }
-					} 
+					}
 					scope:impatient = {
 						trait:impatient = { save_scope_as = target_trait }
-					} 
+					}
 					scope:arrogant = {
 						trait:arrogant = { save_scope_as = target_trait }
-					} 
+					}
 					scope:humble = {
 						trait:humble = { save_scope_as = target_trait }
-					} 
+					}
 					scope:deceitful = {
 						trait:deceitful = { save_scope_as = target_trait }
-					} 
+					}
 					scope:honest = {
 						trait:honest = { save_scope_as = target_trait }
-					} 
+					}
 					scope:craven = {
 						trait:craven = { save_scope_as = target_trait }
-					} 
+					}
 					scope:brave = {
 						trait:brave = { save_scope_as = target_trait }
-					} 
+					}
 					scope:shy = {
 						trait:shy = { save_scope_as = target_trait }
-					} 
+					}
 					scope:gregarious = {
 						trait:gregarious = { save_scope_as = target_trait }
-					} 
+					}
 					scope:ambitious = {
 						trait:ambitious = { save_scope_as = target_trait }
-					} 
+					}
 					scope:content = {
 						trait:content = { save_scope_as = target_trait }
-					} 
+					}
 					scope:arbitrary = {
 						trait:arbitrary = { save_scope_as = target_trait }
-					} 
+					}
 					scope:just = {
 						trait:just = { save_scope_as = target_trait }
-					} 
+					}
 					scope:cynical = {
 						trait:cynical = { save_scope_as = target_trait }
-					} 
+					}
 					scope:zealous = {
 						trait:zealous = { save_scope_as = target_trait }
-					} 
+					}
 					scope:paranoid = {
 						trait:paranoid = { save_scope_as = target_trait }
-					} 
+					}
 					scope:trusting = {
 						trait:trusting = { save_scope_as = target_trait }
-					} 
+					}
 					scope:compassionate = {
 						trait:compassionate = { save_scope_as = target_trait }
-					} 
+					}
 					scope:callous = {
 						trait:callous = { save_scope_as = target_trait }
-					} 
+					}
 					scope:sadistic = {
 						trait:sadistic = { save_scope_as = target_trait }
-					} 
+					}
 					scope:stubborn = {
 						trait:stubborn = { save_scope_as = target_trait }
-					} 
+					}
 					scope:fickle = {
 						trait:fickle = { save_scope_as = target_trait }
-					} 
+					}
 					scope:eccentric = {
 						trait:eccentric = { save_scope_as = target_trait }
-					} 
+					}
 					scope:vengeful = {
 						trait:vengeful = { save_scope_as = target_trait }
-					} 
+					}
 					scope:forgiving = {
 						trait:forgiving = { save_scope_as = target_trait }
-					} 
+					}
 				}
 				if = {
 					limit = { exists = scope:target_trait }
@@ -3695,7 +3695,7 @@ influence_child_personality_interaction = {
 			}
 		}
 	}
-		
+
 	on_decline = {
 		scope:actor = {
 			# Trait you're trying to make your ward gained is saved as scope:target_trait
@@ -3722,7 +3722,7 @@ influence_child_personality_interaction = {
 	}
 
 	auto_accept = no
-	
+
 	ai_accept = {
 		base = 0 # Try to make it 0 for most interactions
 		opinion_modifier = { # Opinion Factor
@@ -3741,7 +3741,7 @@ influence_child_personality_interaction = {
 		}
 
 		modifier = { #more likely if you already have something in common
-			add = { 
+			add = {
 				value = 5
 				if = {
 					limit = {
@@ -3763,7 +3763,7 @@ influence_child_personality_interaction = {
 				}
 			}
 			number_of_personality_traits_in_common = {
-				target = scope:recipient 
+				target = scope:recipient
 				value >= 1
 			}
 			desc = we_are_alike_tt
@@ -3776,7 +3776,7 @@ influence_child_personality_interaction = {
 					limit = {
 						scope:recipient = {
 							number_of_opposing_personality_traits = {
-								target = scope:actor 
+								target = scope:actor
 								value = 2
 							}
 						}
@@ -3787,7 +3787,7 @@ influence_child_personality_interaction = {
 					limit = {
 						scope:recipient = {
 							number_of_opposing_personality_traits = {
-								target = scope:actor 
+								target = scope:actor
 								value = 3
 							}
 						}
@@ -3797,7 +3797,7 @@ influence_child_personality_interaction = {
 			}
 			scope:recipient = {
 				number_of_opposing_personality_traits = {
-					target = scope:actor 
+					target = scope:actor
 					value >= 1
 				}
 			}

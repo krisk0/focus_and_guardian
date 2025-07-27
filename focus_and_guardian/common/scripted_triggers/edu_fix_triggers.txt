@@ -1,7 +1,7 @@
 ﻿
 guardian_university_access_trigger = {
-	any_relation = { 
-		type = guardian 
+	any_relation = {
+		type = guardian
 		court_owner ?= {
 			has_university_access_trigger = yes
 		}

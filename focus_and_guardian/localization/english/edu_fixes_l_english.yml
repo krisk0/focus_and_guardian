@@ -83,8 +83,8 @@
   edu_fix.0004.automation.desc:0 "University Reminders: "
 
   edu_fix.0004.relation.desc:0 "Relation Requirement: "
-  edu_fix.0004.self_and_close_family.desc:0 "Ruler and Close Family\n" 
-  edu_fix.0004.extended_family.desc:0 "Ruler's Extended Family\n" 
+  edu_fix.0004.self_and_close_family.desc:0 "Ruler and Close Family\n"
+  edu_fix.0004.extended_family.desc:0 "Ruler's Extended Family\n"
   edu_fix.0004.dynasty.desc:0 "Ruler's Dynasty\n"
   edu_fix.0004.courtier.desc:0 "Courtiers\n"
 
@@ -98,7 +98,7 @@
   edu_fix.0004.c:0 "Change Gender Setting"
   edu_fix.0004.d:0 "Previous Menu"
 
-  edu_fix.0005.t:0 "Preparing for the Future"  
+  edu_fix.0005.t:0 "Preparing for the Future"
   edu_fix.0005.outro.desc:0 "My [SCOPE.sC('ward_employer').Custom2('RelationToMeShort', SCOPE.sC('potential_ward'))] [potential_ward.GetShortUIName] is approaching the age where the planning of [potential_ward.GetHerHis] formal education is finalized. [potential_ward.GetSheHe|U] would certainly benefit from attending university."
 
   edu_fix.0005.a:0 "I will pay [potential_ward.GetHerHis] tuition."

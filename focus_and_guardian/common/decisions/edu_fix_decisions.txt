@@ -10,7 +10,7 @@
 		NOT = {
 			any_owned_story = {
 				story_type = edu_fix_variables_story
-			} 
+			}
 		}
 	}
 
@@ -63,7 +63,7 @@ edu_fix_change_story_variables_decision = {
 		is_ai = no
 		any_owned_story = {
 			story_type = edu_fix_variables_story
-		} 
+		}
 	}
 
 	effect = {

@@ -1,4 +1,36 @@
-﻿on_birthday = {
+﻿on_death = {
+	on_actions = { edu_fix_remove_story }
+}
+
+# Dead man does not need education automation variables
+edu_fix_remove_story = {
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			random_owned_story = {
+				limit = { story_type = edu_fix_variables_story }
+				end_story = yes
+			}
+		}
+	}
+}
+
+on_game_start = {
+	on_actions = { edu_fix_educate_someone_action }
+}
+
+edu_fix_educate_someone_action = {
+	effect = {
+		# events can fire other events with random delay, while on_actions do not
+		#  support random delay. So we use event not on_action
+		trigger_event = {
+			id = edu_fix.9000
+			days = { 13 17 }
+		}
+	}
+}
+
+on_birthday = {
    on_actions = {
 		delay = { days = 7 }
 		edu_fix_vars_on_action
@@ -121,8 +153,6 @@ on_death_relation_ward = {
 	}
 }
 
-
-
 edu_fix_guardian_death_on_action = {
 	effect = {
 		if = {
@@ -137,8 +167,8 @@ edu_fix_guardian_death_on_action = {
 				name = edu_fix_dead_guardian
 				value = root
 			}
-            set_variable = edu_fix_allowed
-            trigger_event = {
+			set_variable = edu_fix_allowed
+			trigger_event = {
 				id = edu_fix.0001
 			}
 		}
@@ -152,7 +182,7 @@ edu_fix_guardian_removed_on_action = {
 				name = edu_fix_removed_guardian
 				value = root
 			}
-            # TODO: remove edu_fix_removed_guardian on player death?
+			# TODO: remove edu_fix_removed_guardian on player death?
 			set_variable = edu_fix_allowed
 			trigger_event = {
 				id = edu_fix.0001

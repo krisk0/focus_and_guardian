@@ -9,6 +9,10 @@ Automates focus and guardian choice for all your underage courtiers. The mod is 
 * Crusader Kings version Crown 1.15.0.2.
 * Elder Kings modification version 0.15.1.
 
+## WIP
+
+Latest changes untested. Use previous version (commit 931eca61ea), if you encounter problems.
+
 ## Features
 
 1. A chain of events that chooses focus and then guardian is evoked monthly or by your decision.
@@ -69,7 +73,7 @@ I chose to modify the original [EA mod](https://catalogue.smods.ru/archives/1279
 
 ## Installation
 
-1. Put all files except `readme.md` into `mods` directory, where you put `elder-kings-ck3.mod` file and `elder-kings-ck3` directory.
+1. Put all files except `readme.md` into `mod` directory, where you put `elder-kings-ck3.mod` file and `elder-kings-ck3` directory.
 
 2. Activate via launcher called `dowser.exe`.
 
@@ -79,8 +83,13 @@ For more details on mod installation, see [wiki](https://ck3.paradoxwikis.com/Mo
 
 "Elder Kings", then "Focus and guardian".
 
-## List of my CK3 modifications
+## Version history
 
-1. [Heal us, Mara](https://github.com/krisk0/heal_us_mara)
-2. [Focus and Guardian](https://github.com/krisk0/focus_and_guardian)
-3. [Elder Kings fixes and tweaks](https://github.com/krisk0/ek_fixes_and_tweaks)
+### 1.1
+
+* Stop hacking Elder Kings monthly pulse, use own pulse — `edu_fix.9000` event.
+* Cleanup on character death.
+
+## My load order
+
+List of my modifications for CK3, and my load order is [here](https://gist.github.com/krisk0/3c51136a877afd606c184a575400922f).
