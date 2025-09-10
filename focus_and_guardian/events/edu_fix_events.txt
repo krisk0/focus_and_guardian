@@ -30,7 +30,6 @@ edu_fix.9999 = {
 				is_adult = no
 				is_ai = yes
 				age >= 5.8
-				is_alive = yes
 				num_of_relation_guardian = 0
 				NOT = { exists = var:ward_travelling_to_guardian }
 			}
@@ -70,7 +69,6 @@ edu_fix.8888 = {
 	trigger = {
 		root = {
 			is_adult = no
-			is_alive = yes
 			is_ai = yes
 			age >= 5.8          # nearly six
 		}
