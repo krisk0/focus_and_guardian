@@ -7,7 +7,7 @@ Automates focus and guardian choice for all your underage courtiers. The mod is 
 ## Technical requirements
 
 * Crusader Kings version 1.15.0.2. Appears to run under 1.18.4.
-* Elder Kings modification version 0.15.1.
+* Elder Kings modification version 0.15.1 or 0.18.0.2.
 
 ## WIP
 
