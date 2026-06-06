@@ -90,6 +90,10 @@ For more details on mod installation, see [wiki](https://ck3.paradoxwikis.com/Mo
 * Stop hacking Elder Kings monthly pulse, use own pulse — `edu_fix.9000` event.
 * Cleanup on character death.
 
+### 1.18
+
+* Facelift — minor changes in readme and .mod.
+
 ## My load order
 
 List of my modifications for CK3, and my load order is [here](https://gist.github.com/krisk0/3c51136a877afd606c184a575400922f).
