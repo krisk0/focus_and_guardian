@@ -1,6 +1,6 @@
-version="1.1"
+version="1.18"
 tags={
 	"Fixes"
 }
-name="Focus and guardian"
-supported_version="1.15.*"
+name="Focus and Guardian"
+supported_version="1.18.*"

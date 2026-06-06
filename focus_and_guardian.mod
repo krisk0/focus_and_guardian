@@ -1,7 +1,7 @@
-version="1.1"
+version="1.18"
 tags={
 	"Fixes"
 }
 name="Focus and guardian"
-supported_version="1.15.*"
+supported_version="1.18.*"
 path="mod/focus_and_guardian"

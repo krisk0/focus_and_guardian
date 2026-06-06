@@ -33,7 +33,7 @@ edu_fix.9999 = {
 				num_of_relation_guardian = 0
 				NOT = { exists = var:ward_travelling_to_guardian }
 			}
-			order_by = age # As of version 1.15.0.2, children of same age in
+			order_by = age # As of version 1.18.4, children of same age in
 			               #  years are not properly sorted. In UI, too
 			save_scope_as = child_to_educate
 		}
